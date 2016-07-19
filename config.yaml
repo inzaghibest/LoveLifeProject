@@ -1,2 +1,5 @@
+"database":
+  "config": "mongodb://localhost:27017/"
+  "db": "lovelife"
 "global":
   "captcha":

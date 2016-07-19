@@ -8,6 +8,7 @@ import base64,uuid
 import yaml
 import controller.home
 import sys
+import motor
 
 
 # 定义基本信息
@@ -31,7 +32,23 @@ settings = {
     "xsrf_cookies": True,
     'template_path': 'templates',
     'static_path': 'static',
+    #redis配置
+    	"session": {
+		"driver": "redis",
+		"driver_settings": {
+			"host": "localhost",
+			"port": 6379,
+			"db": 1
+		},
+		"force_persistence": False,
+		"cache_driver": True,
+		"cookie_config": {
+			"httponly": True
+		},
+	}
 }
+
+# 从config.yaml中读取配置信息
 config = {}
 try:
     with open(settings["config_filename"], "r") as fin:
@@ -43,6 +60,20 @@ try:
 except:
 	print ("cannot found config.yaml file")
 	sys.exit(0)
+
+# mongodb connection
+# format: mongodb://user:pass@host:port/
+# database name: minos
+
+try:
+	client = motor.MotorClient(config["database"]["config"])
+	database = client[config["database"]["db"]]
+	settings["database"] = database
+except:
+	print ("cannot connect mongodb, check the config.yaml")
+	sys.exit(0)
+
+
 
 # 应用程序基础类
 class Application(tornado.web.Application):
