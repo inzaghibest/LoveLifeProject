@@ -4,22 +4,55 @@
 {% block body %}
 <div class="main-container">
     <div class = "main-header">
-        <div class="header-logo"><img src="/static/images/logo/header_logo.jpg" width="100%" height="100%">
+        <div class="header-logo"><img src={{imgurl}} width="100%" height="100%">
         </div>
-        <div class="header-menu">
-        <ul>
-            <li>登陆</li>
-            <li>注册</li>
-        </ul>
-        </div>
+        <div class="header-title"><h1>爱生活,爱上生活</h1></div>
     </div>
 
     <div class="main-body">
-    container
+        <div class="main-nav">
+            <ul>
+                <li class="hvr-bob">
+                    <a href="#"><img src={{imghouse}}>
+                        <b>房子</b><p>各种房产信息,轻松租房买房</p>
+                    </a>
+                </li>
+                <li class="hvr-bob">
+                    <a href="#"><img src={{imgnews}}>
+                        <b>新闻</b><p>实时热点资讯</p>
+                    </a>
+                </li>
+                <li class="hvr-bob">
+                    <a href="#"><img src={{imgtour}}>
+                        <b>旅游</b><p>感受大自然的乐趣</p>
+                    </a>
+                </li>
+                <li class="hvr-bob">
+                    <a href="#"><img src={{imgchat}}>
+                        <b>聊吧</b><p>同城聊天</p>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+        <div class = "main-news">
+            <div class = "news-left">
+                <p>今日热点</p><img src = {{imghot}} width="100%" height="30%">
+                <ul>
+                    <li><a href="#">热追踪｜全国最新房价出炉！楼市现重要信号</a></li>
+                    <li><a href="#">京城要缴纳房产税了，是真的吗？</a> </li>
+                    <li><a href="#">租房事儿｜又到毕业季 2016毕业生租房全攻略</a></li>
+                    <li><a href="#">婚前买房算谁的？</a></li>
+                </ul>
+            </div>
+            <div class = "news-right"><p>本站特色</p></div>
+        </div>
     </div>
 
     <div class="main-footer">
-     foot
+     <p>欢迎访问爱生活网,爱生活让你从此爱上生活</p>
+        <a href="http://www.anger6.com">www.anger6.com</a>
     </div>
 </div>
 {% end %}
