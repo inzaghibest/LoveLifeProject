@@ -9,6 +9,7 @@ import yaml
 import controller.home
 import sys
 import motor
+import controller.session
 
 
 # 定义基本信息
@@ -32,20 +33,14 @@ settings = {
     "xsrf_cookies": True,
     'template_path': 'templates',
     'static_path': 'static',
-    #redis配置
-    	"session": {
-		"driver": "redis",
-		"driver_settings": {
-			"host": "localhost",
-			"port": 6379,
-			"db": 1
-		},
-		"force_persistence": False,
-		"cache_driver": True,
-		"cookie_config": {
-			"httponly": True
-		},
-	}
+    #session redis配置
+    'session_secret':"3cdcb1f00803b6e78ab50b466a40b9977db396840c28307f428b25e2277f1bcc",
+    'session_timeout':60,
+    'store_options':{
+            'redis_host': 'localhost',
+                'redis_port': 6379,
+                'redis_pass': ''
+        }
 }
 
 # 从config.yaml中读取配置信息
@@ -56,7 +51,9 @@ try:
     for k, v in config["global"].items():
         settings[k] = v
     if "session" in config:
-        settings["session"]["driver_settings"] = config["session"]
+        for key, data in config["session"].items():
+            settings[k] = v
+        #settings["session"]["driver_settings"] = config["session"]
 except:
 	print ("cannot found config.yaml file")
 	sys.exit(0)
@@ -79,6 +76,10 @@ except:
 class Application(tornado.web.Application):
     def __init__(self):
         tornado.web.Application.__init__(self, handlers, **settings)
+        # 初始化session_manager
+        self.session_manager = controller.session.SessionManager(settings['session_secret'],
+                                                                 settings['store_options'],
+                                                                 settings['session_timeout'])
 
 
 if __name__ == '__main__':
