@@ -34,7 +34,7 @@ settings = {
     'template_path': 'templates',
     'static_path': 'static',
     #session redis配置
-    'session_secret':"3cdcb1f00803b6e78ab50b466a40b9977db396840c28307f428b25e2277f1bcc",
+    'session_secret':str(base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)),
     'session_timeout':60,
     'store_options':{
             'redis_host': 'localhost',
@@ -46,13 +46,13 @@ settings = {
 # 从config.yaml中读取配置信息
 config = {}
 try:
-    with open(settings["config_filename"], "r") as fin:
-        config = yaml.load(fin)
-    for k, v in config["global"].items():
+     with open(settings["config_filename"], "r") as fin:
+         config = yaml.load(fin)
+     for k, v in config["global"].items():
         settings[k] = v
-    if "session" in config:
-        for key, data in config["session"].items():
-            settings[k] = v
+# for key, data in config["session"].items():
+#     print('session')
+#     settings[k] = v
         #settings["session"]["driver_settings"] = config["session"]
 except:
 	print ("cannot found config.yaml file")

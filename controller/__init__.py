@@ -1,3 +1,3 @@
-#ÕâÀïÃæµÄÄ£¿éÊÇ¿ÉÒÔÖ±½Óimport controllerÖ®ºóÊ¹ÓÃµÄ,ÆäËûµÄÄ£¿é±ØÐëimport controller.Ä£¿éÃûÀ´Ê¹ÓÃ
+#è¿™é‡Œé¢çš„æ¨¡å—æ˜¯å¯ä»¥ç›´æŽ¥import controllerä¹‹åŽä½¿ç”¨çš„,å…¶ä»–çš„æ¨¡å—å¿…é¡»import controller.æ¨¡å—åæ¥ä½¿ç”¨
 __author__ = 'zhangxp'
 

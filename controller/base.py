@@ -3,11 +3,14 @@ import tornado.web
 import sys
 import controller.session
 
-# »ù´¡Àà,ËùÓĞRequestÏàÓ¦µÄÀà¶¼Ó¦¸Ã´Ó´Ë¼Ì³Ğ,±£Ö¤¿ÉÒÔÊ¹ÓÃsession,ÒÔ¼°self.current_user¿ÉÓÃ
+# åŸºç¡€ç±»,æ‰€æœ‰Requestç›¸åº”çš„ç±»éƒ½åº”è¯¥ä»æ­¤ç»§æ‰¿,ä¿è¯å¯ä»¥ä½¿ç”¨session,ä»¥åŠself.current_userå¯ç”¨
 class BaseHandler(tornado.web.RequestHandler):
     def __init__(self, *argc, **argkw):
+        print('base')
         super(BaseHandler, self).__init__(*argc, **argkw)
+        print('f')
         self.session = controller.session.Session(self.application.session_manager, self)
+        print('d')
     def get_current_user(self):
         return self.session.get("user_name")
 

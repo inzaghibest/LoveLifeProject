@@ -6,7 +6,7 @@ import hashlib
 import redis
 
 # session异常处理类
-class InvalidSessionException:
+class InvalidSessionException(BaseException):
     pass
 
 # session数据
@@ -32,7 +32,7 @@ class Session(SessionData):
             current_session = session_manager.get(request_handler)
         except InvalidSessionException:
             current_session = session_manager.get()
-        for key,data in current_session.iteritems():
+        for key,data in current_session.items():
             self[key] = data
         self.session_id = current_session.session_id
         self.hmac_key = current_session.hmac_key
@@ -65,6 +65,7 @@ class SessionManager(object):
             return {}
     # 获取一个session
     def get(self, request_handler = None):
+        print('get')
         # 如果tornado request_handler不存在,置session数据为空;否则,通过request_handler的get_secure_cookie方法
         # 获取cookie中设置的session_id, 认证key
         if (request_handler == None):
@@ -75,9 +76,11 @@ class SessionManager(object):
             hmac_key = request_handler.get_secure_cookie("verification")
         # 如果session_id不存在,产生一个新的session_id,hmac_key
         if session_id == None:
+            print('session_id none')
             session_exists = False
             session_id = self._generate_id()
             hmac_key = self._generate_hmac(session_id)
+            print('error')
         else:
             session_exists = True
         check_hmac = self._generate_hmac(session_id)
@@ -87,6 +90,7 @@ class SessionManager(object):
         session = SessionData(session_id, hmac_key)
         # 对于存在的session_id,从redis获取session数据
         if session_exists:
+            print('session_exists')
             session_data = self._fetch(session_id)
             for key, data in session_data.iteritems():
                 session[key] = data
@@ -101,11 +105,14 @@ class SessionManager(object):
 
     # session_id产生算法
     def _generate_id(self):
-        new_id = hashlib.sha256(self.secret + str(uuid.uuid4()))
+        print('gener id')
+        new_id = hashlib.sha256((self.secret + str(uuid.uuid4())).encode('utf8'))
+        print('new_id')
         return new_id.hexdigest()
     # session_hmac产生算法
     def _generate_hmac(self, session_id):
-        return hmac.new(session_id, self.secret, hashlib.sha256).hexdigest()
+        print('new hmac')
+        return hmac.new(b'session_id', b'self.secret', hashlib.sha256).hexdigest()
 
 
 
