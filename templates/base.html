@@ -1,5 +1,10 @@
 <html>
 <head>
+        <!-- 引入 jQuery Mobile 样式 -->
+        <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- 引入 jQuery Mobile 库 -->
+        <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>{% block header_title %}LoveLife{% end %}</title>
@@ -12,7 +17,6 @@
 
 <body>
     {% block body %}Welcome To LoveLife{% end %}
-    <script src="{{ static_url('assets/js/jquery-2.2.2.min.js') }}"></script>
     <script src="{{ static_url('assets/js/main.js') }}"></script>
 </body>
 

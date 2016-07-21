@@ -11,6 +11,15 @@ color:#009;
 100%{-webkit-transform:translateY(-8px);transform:translateY(-8px)}
 }
 
+/*.main-navbar
+{
+width=80%;
+height=20%;
+margin:1%;
+}*/
+
+
+
 /*主页面*/
 .main-container
 {
