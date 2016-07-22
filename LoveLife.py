@@ -10,11 +10,13 @@ import controller.home
 import sys
 import motor
 import controller.session
+import controller.base
+import controller.auth
 
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8002, help='give a port!', type=int)
+define('port', default=8003, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
@@ -25,6 +27,7 @@ if not tornado.options.options.url:
 
 handlers = [
         (r'/', controller.home.HomeHandler),
+    (r'^/login',controller.auth.LoginHandler),
         ]
 settings = {
     'base_url':options.url,
@@ -35,7 +38,7 @@ settings = {
     'static_path': 'static',
     #session redis配置
     'session_secret':str(base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)),
-    'session_timeout':60,
+    'session_timeout':6000,
     'store_options':{
             'redis_host': 'localhost',
                 'redis_port': 6379,
@@ -80,6 +83,11 @@ class Application(tornado.web.Application):
         self.session_manager = controller.session.SessionManager(settings['session_secret'],
                                                                  settings['store_options'],
                                                                  settings['session_timeout'])
+        #初始化mongodbs
+        self.db = settings["database"]
+
+
+
 
 
 if __name__ == '__main__':

@@ -2,59 +2,66 @@
 
 {%block header_title%}LoveLife主页{%end%}
 {% block body %}
-  <div data-role="panel" id="HousePanel" data-display="overlay">
+<div data-role="page" id="page-main">
+  <div data-role="panel" id="HousePanel" >
     <h2>租房买房</h2>
     <p>在这里你可以了解到实时租房买房信息</p>
   </div>
-  <div data-role="panel" id="NewsPanel" data-display="overlay">
+  <div data-role="panel" id="NewsPanel">
     <h2>实时新闻</h2>
     <p>事实新闻,关注天下大事</p>
   </div>
-  <div data-role="panel" id="TourPanel" data-display="overlay">
+  <div data-role="panel" id="TourPanel" >
     <h2>天下旅游</h2>
     <p>让的心飞翔在大江南北</p>
   </div>
-  <div data-role="panel" id="ChatPanel" data-display="overlay">
+  <div data-role="panel" id="ChatPanel" >
     <h2>聊聊吧</h2>
     <p>聊聊天吧</p>
   </div>
-<!--头部-->
-  <div data-role="header">
-      <h1>  爱生活,爱上生活  <a href="#">   www.anger6.com  </a></h1>
-    <div data-role="navbar" class="main-navbar">
-        <ul>
-            <li><a href="#" data-icon="home" class="ui-shadow">主页</a></li>
-            <li><a href="#" data-icon="star" class="ui-shadow">注册</a></li>
-            <li><a href="#" data-icon="user" class="ui-shadow"  >登录</a></li>
-            <li><a href="#" data-icon="search" class="ui-shadow">站内搜索</a></li>
-        </ul>
-    </div>
-  </div>
+
+
+    <!--头部-->
+      <div data-role="header">
+        <div data-role="navbar" class="main-navbar">
+            <ul>
+                {%if username == "guest"%}
+                <li><a href="#" data-icon="home" class="ui-shadow">主页</a></li>
+                {%end%}
+                <li><a href="#" data-icon="star" class="ui-shadow">注册</a></li>
+                <li><a href="#" data-icon="star" class="ui-btn-active"> 爱生活,爱上生活  www.anger6.com</a></li>
+                <li><a href="/login" data-rel="dialog" data-icon="user" class="ui-shadow">登录</a></li>
+                <li><a href="#" data-icon="search" class="ui-shadow">站内搜索</a></li>
+            </ul>
+        </div>
+      </div>
 
 <!--主题-->
-  <div data-role="main" class="ui-content">
- <a href="#HousePanel" class="ui-btn ui-btn-inline"><img src={{imghouse}} width="200px" height="120px">租房买房</a>
- <a href="#NewsPanel" class="ui-btn ui-btn-inline"><img src={{imgnews}} width="200px" height="120px">实时新闻</a>
- <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src={{imgtour}} width="200px" height="120px">天下旅游</a>
- <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src={{imgchat}} width="200px" height="120px">聊聊吧</a>
+      <div data-role="content" >
+          <h1>{{username}}</h1>
+     <a href="#HousePanel" class="ui-btn ui-btn-inline"><img src={{imghouse}} width="200px" height="120px">租房买房</a>
+     <a href="#NewsPanel" class="ui-btn ui-btn-inline"><img src={{imgnews}} width="200px" height="120px">实时新闻</a>
+     <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src={{imgtour}} width="200px" height="120px">天下旅游</a>
+     <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src={{imgchat}} width="200px" height="120px">聊聊吧</a>
 
-      <h2></h2>
-    <ul data-role="listview">
-      <li data-role="list-divider">购房指南</li>
-      <li><a href="#">你真的了解公积金贷款吗?</a></li>
-      <li><a href="#">买房手续知多少</a></li>
-      <li data-role="list-divider">实时动态</li>
-      <li><a href="#">北京通州实行限购令</a></li>
-      <li><a href="#">北京房价下跌严重</a></li>
-      <li><a href="#">想买房不够首付引发的问题</a></li>
-    </ul>
-  </div>
+          <h2></h2>
+        <ul data-role="listview">
+          <li data-role="list-divider">购房指南</li>
+          <li><a href="#">你真的了解公积金贷款吗?</a></li>
+          <li><a href="#">买房手续知多少</a></li>
+          <li data-role="list-divider">实时动态</li>
+          <li><a href="#">北京通州实行限购令</a></li>
+          <li><a href="#">北京房价下跌严重</a></li>
+          <li><a href="#">想买房不够首付引发的问题</a></li>
+        </ul>
+      </div>
 
 
-  <div data-role="footer" data-theme="b">
-    <h1>感谢github开源软件为我们带来的便利开发</h1>
-  </div>
+      <div data-role="footer" data-theme="b">
+        <h1>感谢github开源软件为我们带来的便利开发</h1>
+      </div>
 
+</div>
 <!--
 <div class="main-container">
     <div class = "main-header">

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{%block header_title%}登录{%end%}
+{% block body %}
+<div data-role="dialog" id="page-login">
+    <div data-role="header">
+        <h1>登录</h1>
+    </div>
+    <div data-role="content">
+    <form method="post" action="/login">
+        {% raw xsrf_form_html() %}
+      <label for="fname" id="usernameSpan">姓名:</label>
+      <input type="text" name="fname" id="fname">
+        <label for="fpassword" id="passwordSpan">密码:</label>
+      <input type="text" name="fpassword" id="fpassword">
+        <input type="submit" data-inline="true" value="提交" id="login-commit">
+    </form>
+        </div>
+    <div data-role="footer">
+        <h1>{{Message}}</h1>
+    </div>
+</div>
+{% end %}
