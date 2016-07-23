@@ -15,7 +15,7 @@ import controller.session
 # 定义基本信息
 from tornado.options import define,options
 define('port', default=8002, help='give a port!', type=int)
-define('host', default='127.0.0.1', help='localhost')
+define('host', default='192.168.0.3', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
 
