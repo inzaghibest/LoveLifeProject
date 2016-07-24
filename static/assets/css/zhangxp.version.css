@@ -49,6 +49,21 @@ height:20%;
 position:relative;
 width:100%;
 height:100%;
+text-align:center;
+}
+
+.admin-register-table
+{
+text-align:center;
+font-size:1.5em;
+}
+
+.header-logo
+{
+position:relative;
+width:100%;
+height:15%;
+text-align:center;
 }
 
 /* 登陆注册*/

@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/LoveLife.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/__init__.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controller/admins.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/base.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/home.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/session.py" charset="UTF-8" />

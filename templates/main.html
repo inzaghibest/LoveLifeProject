@@ -2,117 +2,101 @@
 
 {%block header_title%}LoveLife主页{%end%}
 {% block body %}
-  <div data-role="panel" id="HousePanel" data-display="overlay">
+
+<div data-role="page" id="page-main">
+  <div data-role="panel" id="HousePanel" >
     <h2>租房买房</h2>
     <p>在这里你可以了解到实时租房买房信息</p>
   </div>
-  <div data-role="panel" id="NewsPanel" data-display="overlay">
+
+  <div data-role="panel" id="NewsPanel">
     <h2>实时新闻</h2>
     <p>事实新闻,关注天下大事</p>
   </div>
-  <div data-role="panel" id="TourPanel" data-display="overlay">
+
+  <div data-role="panel" id="TourPanel" >
     <h2>天下旅游</h2>
     <p>让的心飞翔在大江南北</p>
   </div>
-  <div data-role="panel" id="ChatPanel" data-display="overlay">
+
+  <div data-role="panel" id="ChatPanel" >
     <h2>聊聊吧</h2>
     <p>聊聊天吧</p>
   </div>
-<!--头部-->
-  <div data-role="header">
-      <h1>  爱生活,爱上生活  <a href="#">   www.anger6.com  </a></h1>
-    <div data-role="navbar" class="main-navbar">
-        <ul>
-            <li><a href="#" data-icon="home" >主页</a></li>
-            <li><a href="#" data-icon="star" >注册</a></li>
-            <li><a href="#" data-icon="user"  >登录</a></li>
-            <li><a href="#" data-icon="search" >站内搜索</a></li>
-        </ul>
-    </div>
-  </div>
-
-<!--主题-->
-  <div data-role="main" class="ui-content">
- <a href="#HousePanel" class="ui-btn ui-btn-inline"><img src={{imghouse}} width="20px" height="20px">租房买房</a>
- <a href="#NewsPanel" class="ui-btn ui-btn-inline"><img src={{imgnews}} width="20px" height="20px">实时新闻</a>
- <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src={{imgtour}} width="20px" height="20px">天下旅游</a>
- <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src={{imgchat}} width="20px" height="20px">聊聊吧</a>
-
-      <h2></h2>
-    <ul data-role="listview">
-      <li data-role="list-divider">购房指南</li>
-      <li><a href="#">你真的了解公积金贷款吗?</a></li>
-      <li><a href="#">买房手续知多少</a></li>
-      <li data-role="list-divider">实时动态</li>
-      <li><a href="#">北京通州实行限购令</a></li>
-      <li><a href="#">北京房价下跌严重</a></li>
-      <li><a href="#">想买房不够首付引发的问题</a></li>
-    </ul>
-  </div>
 
 
-  <div data-role="footer" data-theme="b">
-    <h1>感谢github开源软件为我们带来的便利开发</h1>
-  </div>
 
-<!--
-<div class="main-container">
-    <div class = "main-header">
-        <div class="header-logo"><img src={{imgurl}} width="100%" height="100%">
-        </div>
-        <div class="header-title"><h1>爱生活,爱上生活</h1></div>
-        <div class="header-login">
-            <a href="#">登陆</a>
-            <a href="#">立即注册</a>
-        </div>
-    </div>
 
-    <div class="main-body">
-        <div class="main-nav">
+
+    <!--头部-->
+  <div data-role="header" data-theme="e">
+  <h1>旅鸽网信息的使者</h1>
+      <h2><a href="#">  www.anger6.com </a></h2>
+
+
+      <!--导航栏-->
+           <div data-role="navbar" class="main-navbar">
             <ul>
-                <li class="hvr-bob">
-                    <a href="#"><img src={{imghouse}} >
-                        <b>房子</b><p>各种房产信息,轻松租房买房</p>
-                    </a>
-                </li>
-                <li class="hvr-bob">
-                    <a href="#"><img src={{imgnews}}>
-                        <b>新闻</b><p>实时热点资讯</p>
-                    </a>
-                </li>
-                <li class="hvr-bob">
-                    <a href="#"><img src={{imgtour}}>
-                        <b>旅游</b><p>感受大自然的乐趣</p>
-                    </a>
-                </li>
-                <li class="hvr-bob">
-                    <a href="#"><img src={{imgchat}}>
-                        <b>聊吧</b><p>同城聊天</p>
-                    </a>
-                </li>
-                <div class="clear"></div>
+                <li><a href="/" data-icon="home" >主页</a></li>
+                <li><a href="/register" data-icon="star" >注册</a></li>
+                <li><a><img src="/static/images/logo/logo2.jpg"width="50px" height="40px"></a></li>
+                <li><a href="/login" data-icon="user" >登录</a></li>
+                {% if username == "admin" %}
+                <li><a href="/admins" data-icon="user" >管理</a></li>
+                {% end %}
+                <li><a href="#page-about" data-rel="dialog" data-icon="search" >关于我们</a></li>
             </ul>
         </div>
+  </div>
+<!--主题-->
+  <div data-role="main" class="ui-content">
+         <a href="/proanaly" class="ui-btn ui-btn-inline"><img src="/static/images/Work.jpg" width="180px" height="120px">职业分析</a>
+         <a href="#NewsPanel" class="ui-btn ui-btn-inline"><img src="/static/images/news.jpg" width="180px" height="120px">实时新闻</a>
+         <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Tourism.jpg" width="180px" height="120px">旅游天下</a>
+         <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Chat.jpg" width="180px" height="120px">论坛交友</a>
 
-        <div class = "main-news">
-            <div class = "news-left">
-                <p>今日热点</p><img src = {{imghot}} width="100%" height="30%">
-                <ul>
-                    <li><a href="#">热追踪｜全国最新房价出炉！楼市现重要信号</a></li>
-                    <li><a href="#">京城要缴纳房产税了，是真的吗？</a> </li>
-                    <li><a href="#">租房事儿｜又到毕业季 2016毕业生租房全攻略</a></li>
-                    <li><a href="#">婚前买房算谁的？</a></li>
-                </ul>
-            </div>
-            <div class = "news-right"><p>本站特色</p></div>
-        </div>
+      <div>
+        <ul data-role="listview">
+          <li data-role="list-divider">购房指南</li>
+          <li><a href="#">你真的了解公积金贷款吗?</a></li>
+          <li><a href="#">买房手续知多少</a></li>
+            </ul>
+      <ul data-role="listview">
+          <li data-role="list-divider">实时动态</li>
+          <li><a href="#">北京通州实行限购令</a></li>
+          <li><a href="#">北京房价下跌严重</a></li>
+          <li><a href="#">想买房不够首付引发的问题</a></li>
+        </ul>
+          </div>
+
+  </div>
+
+
+      <div data-role="footer" data-theme="b">
+          <h1>{{username}}</h1>
+        <h1>感谢github开源软件为我们带来的便利开发</h1>
+      </div>
+
+</div>
+
+    <div data-role="page"  id="page-about">
+      <div data-role="header">
+        <h1>关于我们</h1>
+      </div>
+
+      <div data-role="main" class="ui-content">
+        <h1>我们的成员</h1>
+        <p>张晓平,男,1987年生,技术一流,架构大局观出色</p>
+          <p>张晓安,男,1987年生,项目经验丰富,基本功扎实</p>
+          <h1>我们的理念</h1>
+          <p>为成千上万的互联网用户提供方便快键的信息数据.</p>
+      </div>
+
+      <div data-role="footer">
+        <h1>谢谢支持</h1>
+      </div>
     </div>
 
-    <div class="main-footer">
-     <p>欢迎访问爱生活网,爱生活让你从此爱上生活</p>
-        <a href="http://www.anger6.com">www.anger6.com</a>
-    </div>
-</div>-->
 {% end %}
 
 

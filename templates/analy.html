@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{%block header_title%}登录{%end%}
+{% block body %}
+<div data-role="page" id="page-analy">
+    <div data-role="header">
+        <h1>职业分析管理</h1>
+    </div>
+
+    <div data-role="content">
+    <form method="post" action="/analy">
+        {% raw xsrf_form_html() %}
+      <label for="category" id="cotegorySpan">职业类别名:</label>
+      <input type="text" name="category" id="category" data-clear-btn = "true">
+        <label for="occupation" id="occupationSpan">职业:</label>
+      <input type="text" name="occupation" id="occupation" data-clear-btn="true">
+        <input type="submit"  value="添加" id="analy-commit">
+    </form>
+    </div>
+
+    <div data-role="footer">
+        <h1>{{Message}}</h1>
+    </div>
+</div>
+{% end %}

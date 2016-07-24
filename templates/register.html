@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block header_title%}注册{%end%}
+{% block body %}
+<div data-role="page" id="page-register">
+    <div data-role="header">
+        <h1>欢迎注册</h1>
+    </div>
+    <div data-role="content">
+    <form method="post" action="/register">
+        {% raw xsrf_form_html() %}
+      <label for="fname" id="usernameSpan">姓名:</label>
+      <input type="text" name="fname" id="fname" data-clear-btn = "true">
+        <label for="fpassword" id="passwordSpan">密码:</label>
+      <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
+        <label for="frepassword" id="repasswordSpan">再次输入密码:</label>
+      <input type="text" name="frepassword" id="frepassword" data-clear-btn="true">
+        <input type="submit"  value="提交" id="register-commit">
+    </form>
+
+        </div>
+    <div data-role="footer">
+         <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+        <h1>{{Message}}</h1>
+    </div>
+</div>
+{% end %}

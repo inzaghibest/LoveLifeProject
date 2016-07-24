@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{%block header_title%}职业分析{%end%}
+{% block body %}
+<div data-role="page" id="page-proanaly">
+    <div data-role="header">
+        <h1>职业分析</h1>
+    </div>
+
+    <div data-role="content">
+
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="搜索职业">
+            {%for coll in colls%}
+            <li data-role="list-divider">{{coll["category"]}}</li>
+            {%for item in coll["occupation"]%}
+            <li><a href="#">{{item}}</a></li>
+            {%end%}
+            {%end%}
+        </ul>
+        <h1 hidden() id="name">333</h1>
+    </div>
+
+    <div data-role="footer">
+         <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

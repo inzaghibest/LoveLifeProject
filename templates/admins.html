@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{%block header_title%}管理员页面{%end%}
+{% block body %}
+<div data-role="page">
+    <div data-role="header" >
+                <h1>管理员页面</h1>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="/admins">已注册用户</a> </li>
+                <li><a href="/analy">管理职业分析</a> </li>
+                <li><a href="/news">管理新闻</a> </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div data-role="content">
+        <div class = "admin-register-table"><h1>已注册用户列表</h1></div>
+        <table border="1" width = "90%" height = "45%">
+          <tr>
+            <th>用户姓名:</th>
+            <th>用户密码</th>
+          </tr>
+            {% for coll in colls %}
+          <tr>
+            <td>{{coll["username"]}}</td>
+            <td>{{coll["password"]}}</td>
+          </tr>
+            {%end%}
+        </table>
+    </div>
+
+        <div data-role="footer"><h1><a href="/"> www.anger6.com</a></h1></div>
+</div>
+{%end%}
