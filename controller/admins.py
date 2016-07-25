@@ -61,7 +61,79 @@ class AnalyHandler(BaseHandler):
 
 class NewsHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        return self.render("news.html")
+        return self.render("news.html", Message = "添加新闻")
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def post(self, *args, **kwargs):
+        print("news post")
+        newscategory = self.get_body_argument("newscategory")
+        print(newscategory)
+        newstitle = self.get_body_argument("newstitle")
+        print(newstitle)
+        newstext = self.get_body_argument("newstext")
+        print(newstext)
+        newsauthor = self.get_body_argument("newsauthor")
+        print(newsauthor)
+        newsdate = self.get_body_argument("newsdate")
+        print(newsdate)
+        newsimg = self.get_body_argument("newsimg")
+        print(newsimg)
+        msg = ""
+        doc_coll = yield self.db.news_collection.find_one({"newscategory":newscategory})
+        # 新闻的存储模型,存储在两个集合中news_collection和news_detail
+        # news_collection:{"newscategory":newscategory, "newstitle":['1','2','3']}
+        # news_detail:{"newstitle":newstitle, "newstext":newstext,...}
+        # 这样存储是为了便于分类展示新闻标题,点击新闻标题获取新闻详情
+        # 存在更新操作,否则插入
+        if(doc_coll != None):
+            print(doc_coll)
+            self.db.news_collection.update({"newscategory":newscategory},{"$addToSet":{"newstitle":newstitle}})
+            newsdetail = yield self.db.news_detail.find_one({"newstitle":newstitle})
+            print(newsdetail)
+            if(newsdetail == None):
+                print("insert")
+                msg = "插入成功!"
+                self.db.news_detail.insert({"newstitle":newstitle, "newstext":newstext, "newsdate":newsdate,"newsauthor":newsauthor})
+            else:
+                print("update")
+                self.db.news_detail.update({"newstitle":newstitle},{"$set":{"newstext":newstext, "newsdate":newsdate,"newsauthor":newsauthor}})
+        # if(doc_coll != None):
+        #     listocc = []
+        #     for k, v in doc_coll.items():
+        #         if(k == "newstitle"):
+        #             for item in v:
+        #                 if(item == newstitle):
+        #                     msg = "新闻已经存在了"
+        #                     print(msg)
+        #                     break;
+        #                 else:
+        #                   listocc.append(item)
+        #                   print(listocc)
+        #     if(msg == "新闻已经存在了"):
+        #         self.render("news.html", Message = msg)
+        #     else:
+        #         listocc.append(newstitle)
+        #         print(listocc)
+        #         doc_coll["newstitle"] = listocc
+        #         print(doc_coll["newstitle"])
+        #         self.db.news_collection.update({"newscategory":newscategory},doc_coll)
+        #         self.db.news_detail.insert({"newstitle":newstitle, "newstext":newstext, "newsdate":newsdate,
+        #                                     "newsauthor":newsauthor})
+                msg = "更新成功!"
+        else:
+            print("不存在")
+            listocc =[newstitle]
+            self.db.news_collection.insert({"newscategory":newscategory, "newstitle":listocc})
+            self.db.news_detail.insert({"newstitle":newstitle, "newstext":newstext, "newsdate":newsdate,
+                                        "newsauthor":newsauthor})
+            msg = "插入成功"
+        self.render("news.html", Message = msg)
+
+
+
+
+
+
 
 
 

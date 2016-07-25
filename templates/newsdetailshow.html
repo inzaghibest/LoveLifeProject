@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{%block header_title%}新闻{%end%}
+{% block body %}
+<div data-role="page" id="page-newsdetailshow">
+    <div data-role="header">
+        <h1>实时新闻</h1>
+    </div>
+
+    <div data-role="content">
+        <div class = "news-header">
+            <h1>{{coll["newstitle"]}}</h1>
+            <h4>作者:{{coll["newsauthor"]}}  时间:{{coll["newsdate"]}}</h4>
+        </div>
+        <div class="news-content">
+            <p>{{coll["newstext"]}}</p>
+        </div>
+    </div>
+
+    <div data-role="footer">
+        <h1>实时新闻</h1>
+        <a href="/newsshow" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

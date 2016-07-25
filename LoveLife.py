@@ -33,9 +33,11 @@ handlers = [
     (r'^/register',controller.auth.RegisterHandler),
     (r'^/admins',controller.admins.AdminsHandler),
     (r'^/proanaly',controller.proanaly.ProAnalyHandler),
-    (r'^/show/([a-zA-z\+]*)',controller.proanaly.ShowHandler),
+    (r'^/show/(.*)',controller.proanaly.ShowHandler),
     (r'^/analy',controller.admins.AnalyHandler),
-    (r'^/news',controller.admins.NewsHandler)
+    (r'^/news',controller.admins.NewsHandler),
+    (r'^/newsshow',controller.home.NewsShowHandler),
+    (r'^/newsdetailshow/(.*)',controller.home.NewDetailShowHandler)
         ]
 settings = {
     'base_url':options.url,

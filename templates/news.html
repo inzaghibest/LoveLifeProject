@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{%block header_title%}登录{%end%}
+{% block body %}
+<div data-role="page" id="page-news">
+    <div data-role="header">
+        <h1>新闻管理</h1>
+    </div>
+
+    <div data-role="content">
+    <form method="post" action="/news">
+        {% raw xsrf_form_html() %}
+      <label for="newscategory" >新闻类别:</label>
+      <input type="text" name="newscategory" id="newscategory" data-clear-btn = "true">
+        <label for="newstitle" >新闻标题:</label>
+      <input type="text" name="newstitle" id="newstitle" data-clear-btn="true">
+        <label for="newsauthor" >新闻作者:</label>
+      <input type="text" name="newsauthor" id="newsauthor" data-clear-btn="true">
+        <label for="newstext">新闻正文:</label>
+        <textarea name="newstext" id="newstext"></textarea>
+        <lable for="newsimg">图片路径:</lable>
+        <input type="text" name="newsimg" id="newsimg">
+        <label for="newsdate">新闻时间:</label>
+         <input type="date" name="newsdate" id="newsdate" />
+        <input type="submit"  value="添加" id="news-commit">
+    </form>
+    </div>
+
+    <div data-role="footer">
+        <h1>{{Message}}</h1>
+        <a href="/admins" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

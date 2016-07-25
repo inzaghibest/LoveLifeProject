@@ -1,10 +1,32 @@
 // 主页面JQuery
 $(document).on("pageinit","#page-main",function(){
+//setTimeout(requestInventory, 2000);
 });
 
+/*function requestInventory()
+{
+    setTimeout(requestInventory, 2000);
+    var mydate = new Date();
+    var t=mydate.toLocaleString();
+    alert(1);
+    jQuery.ajax({url: '//localhost:8003/',
+                    type: 'POST',
+                    data: {
+                        time:t
+                    },
+                error: function(XMLHttpRequest, textStatus, errorThrown)
+                {
+                 alert(XMLHttpRequest.status);
+                 alert(XMLHttpRequest.readyState);
+                 alert(textStatus);
+                },
+                success: function(data, status, xhr) {
+                    alert("succes");
+                }
+        );
+}*/
 // 登录页面JQuery
 $(document).on("pageinit","#page-proanaly",function(){
-    alert("show");
     $("a").click(function()
     {
     var text = $(this).text();

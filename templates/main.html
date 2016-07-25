@@ -30,17 +30,27 @@
 
     <!--头部-->
   <div data-role="header" data-theme="e">
-  <h1>旅鸽网信息的使者</h1>
+      <h1>旅鸽网信息的使者</h1>
       <h2><a href="#">  www.anger6.com </a></h2>
+      {%if username != "guest" and username != None%}
+      <div class = "main-welcome">
+          <b>欢迎您 {{username}}!</b>
+          <p>{{current_time}}</p>
+      </div>
+      {%end%}
 
 
       <!--导航栏-->
            <div data-role="navbar" class="main-navbar">
             <ul>
                 <li><a href="/" data-icon="home" >主页</a></li>
+                {% if username == "None" or username == "guest" %}
                 <li><a href="/register" data-icon="star" >注册</a></li>
+                {% end %}
                 <li><a><img src="/static/images/logo/logo2.jpg"width="50px" height="40px"></a></li>
+                {% if username == "None" or username == "guest" %}
                 <li><a href="/login" data-icon="user" >登录</a></li>
+                {% end %}
                 {% if username == "admin" %}
                 <li><a href="/admins" data-icon="user" >管理</a></li>
                 {% end %}
@@ -51,7 +61,7 @@
 <!--主题-->
   <div data-role="main" class="ui-content">
          <a href="/proanaly" class="ui-btn ui-btn-inline"><img src="/static/images/Work.jpg" width="180px" height="120px">职业分析</a>
-         <a href="#NewsPanel" class="ui-btn ui-btn-inline"><img src="/static/images/news.jpg" width="180px" height="120px">实时新闻</a>
+         <a href="/newsshow" class="ui-btn ui-btn-inline"><img src="/static/images/news.jpg" width="180px" height="120px">实时新闻</a>
          <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Tourism.jpg" width="180px" height="120px">旅游天下</a>
          <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Chat.jpg" width="180px" height="120px">论坛交友</a>
 

@@ -3,6 +3,7 @@ import tornado.web
 from controller.base import BaseHandler
 from tornado import gen
 
+# 登录页面
 class LoginHandler(BaseHandler):
     def get(self, *args, **kwargs):
         self.render("login.html", Message = "欢迎您登录")
@@ -23,7 +24,7 @@ class LoginHandler(BaseHandler):
             self.session["username"] = username
             self.session.save()
         if(msg == "登录成功!"):
-            self.render("main.html", username = self.get_current_user())
+            self.render("main.html", username = self.get_current_user(), current_time = self.get_current_time())
         else:
             self.render("login.html", Message = msg)
 
@@ -42,12 +43,13 @@ class RegisterHandler(BaseHandler):
         print(user_coll)
         if user_coll is not None:
             print("already have")
+            self.render("register.html", Message="该用户已被注册")
         else:
             user_info = {"username":username, "password":password}
             print(user_info)
             result = yield self.db.userinfo.insert(user_info)
             print(result)
-            self.render("main.html",username = username)
+            self.render("main.html",username = username, current_time = self.get_current_time())
 
 
 

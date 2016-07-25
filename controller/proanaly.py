@@ -22,5 +22,6 @@ class ProAnalyHandler(BaseHandler):
 
 class ShowHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        print(args,kwargs)
-        self.render("show.html")
+        print(args)
+        occupation = args[0]
+        self.render("show.html",occupation = occupation)

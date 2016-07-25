@@ -1,6 +1,9 @@
 __author__ = 'zhangxp'
 import tornado.web
 from controller.base import BaseHandler
+from tornado import gen
+import datetime
+
 
 class HomeHandler(BaseHandler):
     def get(self, *args, **kwargs):
@@ -13,6 +16,36 @@ class HomeHandler(BaseHandler):
             self.session["username"] = "guest"
             current_user = "guest"
             self.session.save()
-        self.render('main.html', username = current_user)
+        self.render('main.html', username = current_user, current_time = self.get_current_time())
+    def post(self, *args, **kwargs):
+        print(args)
+        time = args[0]
+        action = args[1]
+
+class NewsShowHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self, *args, **kwargs):
+        cursor = self.db.news_collection.find()
+        colls = []
+        i = 0
+        while (yield cursor.fetch_next):
+                coll = cursor.next_object()
+                colls.append({})
+                for k,v in coll.items():
+                    colls[i][k]=v
+                print(colls)
+                i+=1
+        self.render("newsshow.html", colls = colls)
+
+class NewDetailShowHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self, *args, **kwargs):
+        newstitle = args[0]
+        print(newstitle)
+        doc_coll = yield self.db.news_detail.find_one({"newstitle":newstitle})
+        self.render("newsdetailshow.html",coll = doc_coll)
+
 
 

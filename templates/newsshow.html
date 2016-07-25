@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-{%block header_title%}职业分析{%end%}
+{%block header_title%}实时新闻{%end%}
 {% block body %}
-<div data-role="page" id="page-proanaly">
+<div data-role="page" id="page-newsshow">
     <div data-role="header">
-        <h1>职业分析</h1>
+        <h1>实时新闻</h1>
     </div>
 
     <div data-role="content">
 
-        <ul data-role="listview" data-filter="true" data-filter-placeholder="搜索职业">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="搜索新闻">
             {%for coll in colls%}
-            <li data-role="list-divider">{{coll["category"]}}</li>
-            {%for item in coll["occupation"]%}
-            <li><a href="/show/{{item}}">{{item}}</a></li>
+            <li data-role="list-divider">{{coll["newscategory"]}}</li>
+            {%for item in coll["newstitle"]%}
+            <li><a href="/newsdetailshow/{{item}}">{{item}}</a></li>
             {%end%}
             {%end%}
         </ul>
