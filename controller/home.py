@@ -16,11 +16,9 @@ class HomeHandler(BaseHandler):
             self.session["username"] = "guest"
             current_user = "guest"
             self.session.save()
-        self.render('main.html', username = current_user, current_time = self.get_current_time())
+        self.render('main.html', username = current_user)
     def post(self, *args, **kwargs):
         print(args)
-        time = args[0]
-        action = args[1]
 
 class NewsShowHandler(BaseHandler):
     @tornado.web.asynchronous

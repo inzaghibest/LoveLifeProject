@@ -8,21 +8,18 @@ class AdminsHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
     def get(self, *args, **kwargs):
-                cursor = self.db.userinfo.find()
-                print(cursor)
-                print(self.db)
-                print(self.db.userinfo)
-                colls = []
-                dict = {}
-                i = 0
-                while (yield cursor.fetch_next):
-                    coll = cursor.next_object()
-                    colls.append({})
-                    for k,v in coll.items():
-                        colls[i][k]=v
-                    print(colls)
-                    i+=1
-                return self.render("admins.html", colls =colls)
+        cursor = self.db.userinfo.find()
+        colls = []
+        i = 0
+        while (yield cursor.fetch_next):
+                coll = cursor.next_object()
+                colls.append({})
+                for k,v in coll.items():
+                    colls[i][k]=v
+                print(colls)
+                i+=1
+        return self.render("admins.html", colls =colls)
+
 class AnalyHandler(BaseHandler):
     def get(self, *args, **kwargs):
         return self.render("analy.html",Message = "添加职业类别")

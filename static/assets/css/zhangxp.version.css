@@ -15,7 +15,7 @@ color:#009;
 {
 position:absolute;
 top:5%;
-right:5%;
+right:1%;
 }
 
 .news-header
@@ -29,6 +29,13 @@ text-align:center;
     margin:0 auto 0 auto;
 	border-top:1px solid #333333;
 	text-align:center;
+}
+
+.register-msg
+{
+font-size:2em;
+font-color:red;
+text-align:center;
 }
 /*.main-navbar
 {

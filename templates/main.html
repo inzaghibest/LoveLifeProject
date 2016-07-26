@@ -1,3 +1,4 @@
+<!--网站主页-->
 {% extends "base.html" %}
 
 {%block header_title%}LoveLife主页{%end%}
@@ -35,7 +36,7 @@
       {%if username != "guest" and username != None%}
       <div class = "main-welcome">
           <b>欢迎您 {{username}}!</b>
-          <p>{{current_time}}</p>
+          <p id ="current_time"></p>
       </div>
       {%end%}
 
