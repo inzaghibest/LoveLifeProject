@@ -1,7 +1,27 @@
 // 主页面JQuery
 $(document).on("pageinit","#page-main",function(){
-//setTimeout(requestInventory, 2000);
+setTimeout(requestInventory, 1000);
 });
+
+function requestInventory()
+{
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    $("#current_time").text(currentdate);
+    setTimeout(requestInventory, 1000);
+}
 
 /*function requestInventory()
 {
@@ -48,6 +68,18 @@ $(document).on("pageinit","#page-login",function(){
 });
 //注册页面JQuery
 $(document).on("pageinit","#page-register",function(){
+    // 向注册页面get信息,动态注册结果
+    setTimeout(requestRegisterMsg, 500);
+    function requestRegisterMsg()
+    {
+        alert("getjson");
+        jQuery.getJSON('//localhost:8009/status',function(data) {
+            alert(data['msg']);
+                $('#msg').html(data['msg']);
+                setTimeout(requestRegisterMsg, 0);
+               });
+    }
+    // 注册信息校验
     $("#fname").blur(checkuserName);
     $("#fpassword").blur(checkpassWord);
     $("#frepassword").blur(checkrepassWord);
@@ -63,6 +95,27 @@ $(document).on("pageinit","#page-register",function(){
 /*用户名校验*/
 function checkuserName()
 {
+    // 为了动态检验用户名是否注册
+      jQuery.ajax({
+            url: "//localhost:8009/status",
+            type: "POST",
+            data: {
+                action: 'isused'
+            },
+            //dataType: 'json',
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+             alert(XMLHttpRequest.status);
+             alert(XMLHttpRequest.readyState);
+             alert(textStatus);
+            },
+            beforeSend: function(xhr, settings) {
+                alert("before");
+            },
+            success: function(data, status, xhr) {
+            alert("sucess");
+            }
+        });
     var userNameValue = $("#fname").val();
     var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
     var msg ="姓名:格式正确";

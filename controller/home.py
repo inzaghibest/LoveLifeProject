@@ -13,10 +13,10 @@ class HomeHandler(BaseHandler):
         print(current_user)
         # 为访问者提供一个guest帐户
         if current_user == None:
-            self.session["username"] = "guest"
+            self.session["userinfo"] = "guest"
             current_user = "guest"
             self.session.save()
-        self.render('main.html', username = current_user, current_time = self.get_current_time())
+        self.render('main.html', username = current_user)
     def post(self, *args, **kwargs):
         print(args)
         time = args[0]

@@ -14,11 +14,12 @@ import controller.base
 import controller.auth
 import controller.admins
 import controller.proanaly
+import controller.status
 
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8003, help='give a port!', type=int)
+define('port', default=8009, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
@@ -37,13 +38,14 @@ handlers = [
     (r'^/analy',controller.admins.AnalyHandler),
     (r'^/news',controller.admins.NewsHandler),
     (r'^/newsshow',controller.home.NewsShowHandler),
-    (r'^/newsdetailshow/(.*)',controller.home.NewDetailShowHandler)
+    (r'^/newsdetailshow/(.*)',controller.home.NewDetailShowHandler),
+    (r'^/status(.*)',controller.status.StatusHandler)
         ]
 settings = {
     'base_url':options.url,
     'config_filename':options.config,
     'cookie_secret': base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
-    "xsrf_cookies": True,
+    "xsrf_cookies": False,
     'template_path': 'templates',
     'static_path': 'static',
     #session redis配置

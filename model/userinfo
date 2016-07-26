@@ -1,0 +1,10 @@
+用户信息表userinfo
+{
+"username":用户姓名
+"password":用户密码
+"power":用户等级
+"gold_count":金币数量
+"last_login":最后一次登录时间
+"qq":QQ号
+"email":邮箱地址
+}

@@ -11,7 +11,7 @@ class BaseHandler(tornado.web.RequestHandler):
         self.session = controller.session.Session(self.application.session_manager, self)
         self.db = self.application.db
     def get_current_user(self):
-        return self.session.get("username")
+        return self.session.get("userinfo")
     def get_current_time(self):
         now = datetime.datetime.now()
         otherStyleTime = now.strftime("%Y-%m-%d %H:%M:%S")
