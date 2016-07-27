@@ -39,7 +39,8 @@ handlers = [
     (r'^/news',controller.admins.NewsHandler),
     (r'^/newsshow',controller.home.NewsShowHandler),
     (r'^/newsdetailshow/(.*)',controller.home.NewDetailShowHandler),
-    (r'^/status',controller.status.StatusHandler)
+    (r'^/status',controller.status.StatusHandler),
+    (r'^/about',controller.home.AboutHandler)
         ]
 settings = {
     'base_url':options.url,

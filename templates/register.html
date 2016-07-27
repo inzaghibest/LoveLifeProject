@@ -5,18 +5,23 @@
 {% block body %}
 <div data-role="page" id="page-register">
     <div data-role="header">
-        <h1>欢迎注册</h1>
+        <h1>注册</h1>
     </div>
-    <div data-role="content">
-    <form method="post" action="/register">
+    <div data-role="content" class="register-body">
+    <form method="post" action="/register" class="register-form">
         {% raw xsrf_form_html() %}
-      <label for="fname" id="usernameSpan">姓名:</label>
-      <input type="text" name="fname" id="fname" data-clear-btn = "true">
-        <label for="fpassword" id="passwordSpan">密码:</label>
-      <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
-        <label for="frepassword" id="repasswordSpan">再次输入密码:</label>
-      <input type="text" name="frepassword" id="frepassword" data-clear-btn="true">
-        <input type="submit"  value="提交" id="register-commit">
+        <fieldset >
+           <legend class="register-legend"><img src="/static/images/welcome.jpg" width = "200px" height = "100px">
+           </legend>
+          <label for="fname" id="usernameSpan">姓名:</label>
+          <input type="text" name="fname" id="fname" data-clear-btn = "true">
+            <label for="fpassword" id="passwordSpan">密码:</label>
+          <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
+            <label for="frepassword" id="repasswordSpan">再次输入密码:</label>
+          <input type="text" name="frepassword" id="frepassword" data-clear-btn="true">
+            <div class="register-button"><input type="submit"  value="提交注册" id="register-commit" width="150px" height="100px">
+                </div>
+        </fieldset>
     </form>
 
         </div>

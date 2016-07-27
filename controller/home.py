@@ -4,11 +4,10 @@ from controller.base import BaseHandler
 from tornado import gen
 import datetime
 
-
+# 主页
 class HomeHandler(BaseHandler):
     def get(self, *args, **kwargs):
         print("HomeHandler")
-        #此处从后台数据库获取
         current_user = self.get_current_user()
         print(current_user)
         # 为访问者提供一个guest帐户
@@ -20,6 +19,7 @@ class HomeHandler(BaseHandler):
     def post(self, *args, **kwargs):
         print(args)
 
+# 新闻
 class NewsShowHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
@@ -36,6 +36,7 @@ class NewsShowHandler(BaseHandler):
                 i+=1
         self.render("newsshow.html", colls = colls)
 
+# 新闻详情
 class NewDetailShowHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
@@ -45,5 +46,8 @@ class NewDetailShowHandler(BaseHandler):
         doc_coll = yield self.db.news_detail.find_one({"newstitle":newstitle})
         self.render("newsdetailshow.html",coll = doc_coll)
 
-
+# 关于我们
+class AboutHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        self.render("about.html")
 

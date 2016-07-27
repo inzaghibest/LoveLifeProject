@@ -1,0 +1,26 @@
+<!-- 关于我们页面 -->
+{% extends "base.html" %}
+
+{%block header_title%}登录{%end%}
+{% block body %}
+<div data-role="page" id="page-analy">
+    <div data-role="header">
+        <h1>关于我们</h1>
+    </div>
+
+    <div data-role="content" class="about-content">
+        <h1>我们的成员</h1>
+            <p class="about-text">张晓平,网站主要建设人员.主要负责后端服务器开发,前台页面开发,整个网站的结构流程.</p>
+            <p>能够熟练运用tornado,mongodb,redis,html5+css3,jquery-moblie,jquery迅速搭建网站.</p>
+            <p class="about-text">张晓安,网站主要建设人员.主要负责大量网站数据的采集和分析.</p>
+            <p>能够熟练运用爬虫,人工智能技术对海量数据进行最专业的分析展示.</p>
+        <h1>我们的理念</h1>
+        <p>旅鸽网,希望像鸽子一样,将海量的信息,送到每一个需要它的人手中.在信息化的社会,数据信息的重要性不言而喻,
+        我们通过对海量数据的采集,专业的分析,让信息更有价值.</p>
+    </div>
+
+    <div data-role="footer">
+        <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

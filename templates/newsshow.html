@@ -14,7 +14,7 @@
             {%for coll in colls%}
             <li data-role="list-divider">{{coll["newscategory"]}}</li>
             {%for item in coll["newstitle"]%}
-            <li><a href="/newsdetailshow/{{item}}">{{item}}</a></li>
+            <li><a href="/newsdetailshow/{{item}}" data-transition="flow">{{item}}</a></li>
             {%end%}
             {%end%}
         </ul>

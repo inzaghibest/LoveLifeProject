@@ -3,6 +3,7 @@ import tornado.web
 from controller.base import BaseHandler
 from tornado import gen
 
+# 职业页面
 class ProAnalyHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
@@ -20,6 +21,7 @@ class ProAnalyHandler(BaseHandler):
             i+=1
         self.render("proanaly.html", colls =colls)
 
+# 职业展示页面
 class ShowHandler(BaseHandler):
     def get(self, *args, **kwargs):
         print(args)

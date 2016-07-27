@@ -5,169 +5,188 @@ height:100%;
 font-size:5px;
 color:#009;
 }
-@keyframes ImageUp
-{0%{-webkit-transform:translateY(-8px);transform:translateY(-8px)}
-50%{-webkit-transform:translateY(-4px);transform:translateY(-4px)}
-100%{-webkit-transform:translateY(-8px);transform:translateY(-8px)}
-}
 
-.main-welcome
-{
-position:absolute;
-top:5%;
-right:1%;
-}
+/* main.html */
 
-.news-header
+/*#main-body
 {
-text-align:center;
-}
-
-.news-content
-{
-    position:relative;
-    margin:0 auto 0 auto;
-	border-top:1px solid #333333;
-	text-align:center;
-}
-
-.register-msg
-{
-font-size:2em;
-font-color:red;
-text-align:center;
-}
-/*.main-navbar
-{
-width=80%;
-height=20%;
-margin:1%;
+background-image:url(/static/images/background/bk6.jpg);
+filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+-moz-background-size:100% 100%;
+    background-size:100% 100%;
 }*/
 
-
-
-/*主页面*/
-.main-container
+/*右上角登录展示*/
+.main-welcome
 {
 position:relative;
-background-image:url(/static/images/background/bk3.jpg);
-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
--moz-background-size:150% 150%;
-    background-size:150% 150%;
+text-align:center;
+bottom:4%;
+}
+
+/* 图片连播 */
+#scrollPics{
+    position:relative;
+    height:200px;
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#scrollPics .text
+{
+position:absolute;
+bottom:1%;
+left:40%;
+text-align:center;
+font-size:3em;
+color:blue;
+}
+
+/* 将数字绝对定位 */
+.num
+{
+    position:absolute;
+    right:5%;
+    bottom:1%;
+}
+
+/* 数字设置 */
+#scrollPics .num li{
+    float: left;
+    color: #FF7300;
+    text-align: center;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    margin: 3px 1px;
+    border: 1px solid #FF7300;
+    background-color: #fff;
+}
+#scrollPics .num li.on{
+    color: #fff;
+    line-height: 21px;
+    width: 21px;
+    height: 21px;
+    font-size: 16px;
+    margin: 0 1px;
+    border: 0;
+    background-color: #FF7300;
+    font-weight: bold;
+}
+/* 图片联播 end */
+/* 中间版块展示 */
+.main-panel
+{
+position:relative;
+border-radius:50px 50px;
+}
+.main-panel-ul li
+{
+padding:0.5%;
+}
+
+
+
+/* register.html begin*/
+.register-body
+{
+position:relative;
 margin:0 auto 0 auto;
-top:1%;
-width:100%;
-height:100%;
-/*min-width:800px;
-min-height:960px;*/
+width:80%;
 }
 
-.main-container .main-header
+/* 注册表单标题 */
+.register-legend
 {
-position:relative;
-width:100%;
-height:20%;
+text-align:center;
 }
 
-/* 页面头部 */
-.main-header .header-logo
+/* 注册表单样式 */
+.register-form
+{
+}
+.register-form fieldset
+{
+padding:2%;
+border:1px solid #CCC;
+border-radius:25px 25px;
+}
+
+/* 页面底部提示信息 */
+.register-msg
+{
+text-align:center;
+font-family:Verdana, Geneva, sans-serif;
+font-size:2vmin;
+color:#63F;
+}
+
+.register-button
+{
+margin:0 auto 0 auto;
+width:120px;
+height:50px;
+text-align:center;
+}
+/* register.html end */
+
+/* login.html begin */
+.login-body
 {
 position:relative;
-width:100%;
-height:100%;
+margin:0 auto 0 auto;
+width:80%;
+}
+
+/* 注册表单标题 */
+.login-legend
+{
 text-align:center;
 }
 
-.admin-register-table
+/* 登录表单样式 */
+.login-form
 {
-text-align:center;
-font-size:1.5em;
+}
+.login-form fieldset
+{
+padding:2%;
+border:1px solid #CCC;
+border-radius:25px 25px;
 }
 
-.header-logo
+.login-button
 {
-position:relative;
-width:100%;
-height:15%;
-text-align:center;
-}
-
-/* 登陆注册*/
-.main-header .header-login
-{
-position:absolute;
-top:1%;
-right:2%;
-width:20%;
-height:20%;
-}
-
-/*主页标题*/
-.main-header .header-title
-{
-position:absolute;
-left:45%;
-top:4%;
-}
-
-
-
-.main-container .main-body
-{
-position:relative;
-top:3%;
-width:100%;
-height:65%;
-}
-
-.main-body .main-nav
-{
-position:relative;
-top:1%;
-width:100%;
-height:40%;
-}
-
-.main-nav .hvr-bob
-{
-float:left;
-margin-left:10%;
-}
-
-.main-body .main-news
-{
-position:relative;
-background-color:#CCC;
-top:1%;
-width:100%;
-height:50%;
-}
-
-.main-news .news-left
-{
-position:absolute;
-left:5%;
-width:35%;
-height:100%;
+margin:0 auto 0 auto;
+width:120px;
+height:50px;
 text-align:center;
 }
 
-.main-news .news-right
+.login-msg
 {
-position:absolute;
-left:50%;
-width:45%;
-height:100%;
+text-align:center;
+font-family:Verdana, Geneva, sans-serif;
+font-size:2vmin;
+color:#63F;
+}
+/* login.html end */
+
+/* about.html begin */
+.about-content
+{
 text-align:center;
 }
-
-
-
-.main-container .main-footer
+.about-content p
 {
-position:relative;
-top:3%;
-width:96%;
-height:10%;
-text-align:center;
+font-family:Verdana, Geneva, sans-serif;
+font-size:2.5vmin;
+color:#06F;
 }
+/* about html end */
+
+
+

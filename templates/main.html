@@ -5,9 +5,10 @@
 {% block body %}
 
 <div data-role="page" id="page-main">
+
   <div data-role="panel" id="HousePanel" >
-    <h2>租房买房</h2>
-    <p>在这里你可以了解到实时租房买房信息</p>
+    <h2>职业分析</h2>
+    <p>专业的职业分析数据</p>
   </div>
 
   <div data-role="panel" id="NewsPanel">
@@ -16,57 +17,109 @@
   </div>
 
   <div data-role="panel" id="TourPanel" >
-    <h2>天下旅游</h2>
-    <p>让的心飞翔在大江南北</p>
+    <h2>旅游天下</h2>
+    <p>让你的心飞翔在大江南北</p>
+      <p>该版块暂缓开通,敬请期待!</p>
   </div>
 
   <div data-role="panel" id="ChatPanel" >
-    <h2>聊聊吧</h2>
-    <p>聊聊天吧</p>
+    <h2>年代秀</h2>
+    <p>60,70,80,90后都能找到自己的组织</p>
+      <p>该版块暂缓开通,敬请期待!</p>
   </div>
 
 
-
-
-
     <!--头部-->
-  <div data-role="header" data-theme="e">
+  <div data-role="header" data-theme="b">
       <h1>旅鸽网信息的使者</h1>
       <h2><a href="#">  www.anger6.com </a></h2>
-      {%if username != "guest" and username != None%}
-      <div class = "main-welcome">
-          <b>欢迎您 {{username}}!</b>
-          <p id ="current_time"></p>
-      </div>
-      {%end%}
+
 
 
       <!--导航栏-->
-           <div data-role="navbar" class="main-navbar">
+      <div data-role="navbar" class="main-navbar">
             <ul>
                 <li><a href="/" data-icon="home" >主页</a></li>
                 {% if username == "None" or username == "guest" %}
-                <li><a href="/register" data-icon="star" >注册</a></li>
+                <li><a href="/register" data-icon="tag" data-transition="flip">注册</a></li>
                 {% end %}
-                <li><a><img src="/static/images/logo/logo2.jpg"width="50px" height="40px"></a></li>
+                <li><a><img src="/static/images/logo/logo3.gif"width="50px" height="40px"></a></li>
                 {% if username == "None" or username == "guest" %}
-                <li><a href="/login" data-icon="user" >登录</a></li>
+                <li><a href="/login" data-icon="user" data-transition="flip">登录</a></li>
                 {% end %}
                 {% if username == "admin" %}
                 <li><a href="/admins" data-icon="user" >管理</a></li>
                 {% end %}
-                <li><a href="#page-about" data-rel="dialog" data-icon="search" >关于我们</a></li>
+                <li><a href="/about" data-rel="dialog" data-icon="mail">关于我们</a></li>
             </ul>
-        </div>
+      </div>
   </div>
-<!--主题-->
-  <div data-role="main" class="ui-content">
-         <a href="/proanaly" class="ui-btn ui-btn-inline"><img src="/static/images/Work.jpg" width="180px" height="120px">职业分析</a>
-         <a href="/newsshow" class="ui-btn ui-btn-inline"><img src="/static/images/news.jpg" width="180px" height="120px">实时新闻</a>
-         <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Tourism.jpg" width="180px" height="120px">旅游天下</a>
-         <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Chat.jpg" width="180px" height="120px">论坛交友</a>
 
-      <div>
+<!--主题-->
+  <div data-role="main" class="ui-content" id="main-body">
+      <!--<div class = "main-palte">
+         <a href="/proanaly" class="ui-btn ui-btn-inline"><img src="/static/images/Work.jpg" width="190px" height="140px">职业分析</a>
+         <a href="/newsshow" class="ui-btn ui-btn-inline"><img src="/static/images/news.jpg" width="190px" height="140px">实时新闻</a>
+         <a href="#TourPanel" class="ui-btn ui-btn-inline"><img src="/static/images/Tourism.jpg" width="190px" height="140px">旅游天下</a>
+         <a href="#ChatPanel" class="ui-btn ui-btn-inline"><img src="/static/images/ages.jpg" width="190px" height="140px">年代Show</a>
+      </div>-->
+  <div id="scrollPics">
+        <ul class="slider" >
+            <li><a href="/proanaly"><img src="/static/images/bigdata.jpg" width="60%" height="200px"/></a></li>
+            <li><a href="/newsshow"> <img src="/static/images/hot.jpg" width="60%" height="200px" /></a></li>
+            <li><a href="/proanaly"> <img src="/static/images/analy.jpg" width="60%" height="200px" /></a></li>
+            <li><a href="/about"> <img src="/static/images/us.jpg" width="60%" height="200px" /></a></li>
+            <li><a href="/register"><img src="/static/images/mail.jpg" width="60%" height="200px" /></a> </li>
+        </ul>
+        <ul class="num" >
+            <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+      <div class="main-panel">
+          <ul data-role="listview" data-inset="true" class="main-panel-ul">
+              <li><h1>网站导航</h1></li>
+          <li class = "main-li">
+            <a href="/proanaly" data-transition="slide">
+            <img src="/static/images/work.png">
+            <h2>职业分析</h2>
+            <p>基于大数据,提供职业分析数据.</p>
+            </a>
+          </li>
+
+          <li class = "main-li">
+            <a href="/newsshow" data-transition="slide">
+            <img src="/static/images/news.png">
+            <h2>实时新闻</h2>
+            <p>实时准确迅速的新闻资讯.</p>
+            </a>
+          </li>
+
+          <li class = "main-li">
+            <a href="#TourPanel">
+            <img src="/static/images/Tourism.png">
+            <h2>旅游天下</h2>
+            <p>让旅游更轻松,更快捷.</p>
+            </a>
+          </li>
+
+
+
+          <li class = "main-li">
+            <a href="#ChatPanel">
+            <img src="/static/images/ages.png">
+            <h2>年代Show</h2>
+            <p>同龄人的故事.</p>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <!--<div>
         <ul data-role="listview">
           <li data-role="list-divider">购房指南</li>
           <li><a href="#">你真的了解公积金贷款吗?</a></li>
@@ -78,13 +131,18 @@
           <li><a href="#">北京房价下跌严重</a></li>
           <li><a href="#">想买房不够首付引发的问题</a></li>
         </ul>
-          </div>
+      </div>-->
 
   </div>
 
 
       <div data-role="footer" data-theme="b">
-          <h1>{{username}}</h1>
+          {%if username != "guest" and username != None%}
+          <div class = "main-welcome">
+              <p>欢迎您 {{username}}! <b id ="current_time"></b></p>
+
+          </div>
+          {%end%}
         <h1>感谢github开源软件为我们带来的便利开发</h1>
       </div>
 

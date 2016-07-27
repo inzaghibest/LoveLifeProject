@@ -4,6 +4,7 @@ import tornado.gen
 from tornado import gen
 from controller.base import BaseHandler
 
+# 管理员管理页面
 class AdminsHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
@@ -20,6 +21,7 @@ class AdminsHandler(BaseHandler):
                 i+=1
         return self.render("admins.html", colls =colls)
 
+# 职业分析管理页面
 class AnalyHandler(BaseHandler):
     def get(self, *args, **kwargs):
         return self.render("analy.html",Message = "添加职业类别")
@@ -45,17 +47,17 @@ class AnalyHandler(BaseHandler):
             print(listocc)
             doc_coll["occupation"] = listocc
             print(doc_coll["occupation"])
-            self.db.occupation_info.update({"category":category},doc_coll)
+            yield self.db.occupation_info.update({"category":category},doc_coll)
             msg = "更新成功!"
         else:
             print("不存在")
             listocc =[occupation]
-            self.db.occupation_info.insert({"category":category, "occupation":listocc})
+            yield self.db.occupation_info.insert({"category":category, "occupation":listocc})
             msg = "插入成功"
         self.render("analy.html", Message = msg)
 
 
-
+# 新闻管理页面
 class NewsHandler(BaseHandler):
     def get(self, *args, **kwargs):
         return self.render("news.html", Message = "添加新闻")

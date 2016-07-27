@@ -25,10 +25,13 @@ class LoginHandler(BaseHandler):
             self.session["username"] = username
             self.session.save()
         if(msg == "登录成功!"):
-            self.render("main.html", username = self.get_current_user())
+            print("登陆成功!")
+            self.redirect("main.html", username = self.get_current_user())
         else:
+            print(msg)
             self.render("login.html", Message = msg)
 
+# 注册页面
 class RegisterHandler(BaseHandler):
     def get(self, *args, **kwargs):
         self.render("register.html", Message = "欢迎您注册")
