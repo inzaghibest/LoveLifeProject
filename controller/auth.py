@@ -26,7 +26,7 @@ class LoginHandler(BaseHandler):
             self.session.save()
         if(msg == "登录成功!"):
             print("登陆成功!")
-            self.redirect("main.html", username = self.get_current_user())
+            self.redirect("/?username=%s" %self.get_current_user())
         else:
             print(msg)
             self.render("login.html", Message = msg)
