@@ -1,0 +1,25 @@
+<!-- 个人主页 -->
+{% extends "base.html" %}
+
+{%block header_title%}个人主页{%end%}
+{% block body %}
+<div data-role="page" id="page-personal">
+    <div data-role="header" class = "personal-header">
+        <h1>个人主页</h1>
+            <h1>张晓平</h1>
+            <ul>
+                <li><a href="#">等级1</a></li>
+                <li><a href="#">金币数10</a></li>
+                <li><a href="#">我的订阅</a></li>
+            </ul>
+    </div>
+
+    <div data-role="content" class="login-body">
+
+    </div>
+
+    <div data-role="footer">
+         <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

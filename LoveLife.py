@@ -40,13 +40,16 @@ handlers = [
     (r'^/newsshow',controller.home.NewsShowHandler),
     (r'^/newsdetailshow/(.*)',controller.home.NewDetailShowHandler),
     (r'^/status',controller.status.StatusHandler),
-    (r'^/about',controller.home.AboutHandler)
+    (r'^/about',controller.home.AboutHandler),
+    (r'^/exitLogin',controller.auth.ExitLoginHandler),
+    (r'^/Personal',controller.home.PersonalHandler)
+    #可以添加这个一个类,放到最后面,可以处理任何页面，捕捉未找到页面(r'.*', PageNotFoundHandler)
         ]
 settings = {
     'base_url':options.url,
     'config_filename':options.config,
     'cookie_secret': base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes),
-    "xsrf_cookies": False,
+    "xsrf_cookies": True, #名为 _xsrf 的 cookie生成xsrf cookie字段,在post请求时,附加此字段,保证其他网站的非法post请求不被处理.
     'template_path': 'templates',
     'static_path': 'static',
     #session redis配置

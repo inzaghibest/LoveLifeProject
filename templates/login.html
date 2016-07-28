@@ -10,9 +10,10 @@
 
     <div data-role="content" class="login-body">
     <form method="post" action="/login"  class = "login-form">
+        <!--如果不用tornodo模版的话,可以用self.xsrf_form_html()来生成-->
         {% raw xsrf_form_html() %}
         <fieldset>
-            <legend class="login-legend"><img src="/static/images/login.jpg" width = "100px" height = "80px">
+            <legend class="login-legend"><img src="/static/images/register.jpg" width = "100px" height = "80px">
             </legend>
           <label for="fname" id="usernameSpan">姓名:</label>
           <input type="text" name="fname" id="fname" data-clear-btn = "true">

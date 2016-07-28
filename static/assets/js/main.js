@@ -1,8 +1,26 @@
 // 主页面main.html JQuery begin
+// 对于 AJAX 请求来说，基本上是不需要担心跨站的，所以 Tornado 1.1.1 以前的版本并不对带有 X-Requested-With:
+// XMLHTTPRequest 的请求做验证。后来 Google 的工程师指出，恶意的浏览器插件可以伪造跨域 AJAX 请求，所以也应
+// 该进行验证。对此我不置可否，因为浏览器插件的权限可以非常大，伪造 cookie 或是直接提交表单都行。
+// 不过解决办法仍然要说，其实只要从 cookie 中获取 _xsrf 字段，然后在 AJAX 请求时加上这个参数，或者放在
+// X-Xsrftoken 或 X-Csrftoken 请求头里即可。嫌麻烦的话，可以用 jQuery 的 $.ajaxSetup() 来处理：
+/*$.ajaxSetup({
+    beforeSend: function(jqXHR, settings) {
+        type = settings.type
+        if (type != 'GET' && type != 'HEAD' && type != 'OPTIONS') {
+            var pattern = /(.+; *)?_xsrf *= *([^;" ]+)/;
+            var xsrf = pattern.exec(document.cookie);
+            if (xsrf) {
+                jqXHR.setRequestHeader('X-Xsrftoken', xsrf[2]);
+            }
+        }
+}});*/
 $(document).on("pageinit","#page-main",function(){
-// 定时获取当前时间
-setTimeout(GetCurrentTime, 1000);
-//滚动广告
+
+    // 定时获取当前时间
+    setTimeout(GetCurrentTime, 1000);
+
+    //滚动广告
     var len = $(".num > li").length;
     var index = 0;  //图片序号
     var adTimer;
@@ -71,7 +89,7 @@ function checkuserNameforlogin()
 {
     var userNameValue = $("#fname").val();
     var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
-    var msg ="姓名:格式正确";
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
     if(userNameValue == null || userNameValue == "")
     {
         msg = "姓名:";
@@ -83,14 +101,14 @@ function checkuserNameforlogin()
         msg +="<font color='red'>用户名格式不正确</font>";
     }
     $("#usernameSpan").html(msg);
-    return msg == "姓名:格式正确";;
+    return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
 // 登录页面密码校验
 function checkpassWordforlogin()
 {
     var password = $("#fpassword").val();
     var passwordRegex = /^[!@#$%^&*()\w]{0,15}$/;
-    var msg ="密码:格式正确";
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
     if(password == null || password == "")
     {
         msg = "密码:"
@@ -102,7 +120,7 @@ function checkpassWordforlogin()
         msg +="<font color='red'>密码格式不正确</font>";
     }
     $("#passwordSpan").html(msg);
-    return msg == "密码:格式正确";
+    return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
 // 登录页面 login end
 
@@ -123,34 +141,52 @@ $(document).on("pageinit","#page-register",function(){
     })
 });
 
-/*用户名校验*/
+/*注册页面用户名校验*/
 function checkuserName()
 {
+    // 首先检查用户名格式
     var userNameValue = $("#fname").val();
+    var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
+    if(userNameValue == null || userNameValue == "")
+    {
+        msg = "姓名:";
+        msg +="<font color='red'>用户名必须填写!</font>";
+    }
+    else if(!usernameRegex.test(userNameValue))
+    {
+        msg = "姓名:";
+        msg +="<font color='red'>用户名格式不正确</font>";
+    }
+   // $("#usernameSpan").html(msg);
+   // return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
     // 从status.html页面get数据,动态检查用户名是否使用
     jQuery.getJSON('//localhost:8009/status',{"username":userNameValue},function(data)
             {
                 $('#msg').html(data['msg']);
                 Message = data['msg'];
-                // 没有检查到错误,更新页面提示信息
+                // 没有报错,说明可用
                 if(Message == "")
                 {
-                $("#usernameSpan").html("姓名:");
-                $('#msg').html("欢迎注册!");
-                CheckNameOther()
+                $("#usernameSpan").html(msg);
+                $('#msg').html("该用户名可用!");
+                $(".register-legend").html("<img src='/static/images/register.jpg' width = '100px' height = '80px'>");
                 }else
                 {
-                Message = "<font color='red'>"+Message +"</font>";
-                $("#usernameSpan").html(Message);
+                msg = "<font color='red'>"+Message +"</font>";
+                $("#usernameSpan").html(msg);
+                $(".register-legend").html("<img src='/static/images/already.jpg' width = '100px' height = '80px'>");
                 }
             }
      );
+
+     return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
 function CheckNameOther()
 {
     var userNameValue = $("#fname").val();
     var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
-    var msg ="姓名:格式正确";
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
     if(userNameValue == null || userNameValue == "")
     {
         msg = "姓名:";
@@ -162,7 +198,7 @@ function CheckNameOther()
         msg +="<font color='red'>用户名格式不正确</font>";
     }
     $("#usernameSpan").html(msg);
-    return msg == "姓名:格式正确";;
+    return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
 
 /* 密码校验 */
@@ -170,7 +206,7 @@ function checkpassWord()
 {
     var password = $("#fpassword").val();
     var passwordRegex = /^[!@#$%^&*()\w]{0,15}$/;
-    var msg ="密码格式正确";
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
     if(password == null || password == "")
     {
         msg = "密码:"
@@ -182,20 +218,20 @@ function checkpassWord()
         msg +="<font color='red'>密码格式不正确</font>";
     }
     $("#passwordSpan").html(msg);
-    return msg == "密码:格式正确";
+    return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
 
 /*密码重复校验*/
 function checkrepassWord()
 {
-var repassword = $("#frepassword").val();
-var password = $("#fpassword").val();
-//var repasswordRegex = /^[!@#$%^&*()\w]{0,15}$/;
-var msg ="再次输入密码:OK";
-if(repassword == null || repassword == "")
-msg = "再次输入密码:"+"<font color='red'>请再次输入密码!</font>";
-else if(repassword != password)
-msg = "<font color='red'>再次输入密码:密码不一致!</font>";
-$("#repasswordSpan").html(msg);
-return msg == "再次输入密码:OK";
+    var repassword = $("#frepassword").val();
+    var password = $("#fpassword").val();
+    //var repasswordRegex = /^[!@#$%^&*()\w]{0,15}$/;
+    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
+    if(repassword == null || repassword == "")
+    msg = "再次输入密码:"+"<font color='red'>请再次输入密码!</font>";
+    else if(repassword != password)
+    msg = "<font color='red'>再次输入密码:密码不一致!</font>";
+    $("#repasswordSpan").html(msg);
+    return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }

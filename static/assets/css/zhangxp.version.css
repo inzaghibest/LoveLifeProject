@@ -27,29 +27,25 @@ bottom:4%;
 /* 图片连播 */
 #scrollPics{
     position:relative;
+    left:-2%;
     height:200px;
     width: 100%;
     margin-bottom: 15px;
     overflow: hidden;
 }
 
-#scrollPics .text
+.slider li
 {
-position:absolute;
-bottom:1%;
-left:40%;
-text-align:center;
-font-size:3em;
-color:blue;
+list-style-type:none;
 }
-
 /* 将数字绝对定位 */
 .num
 {
     position:absolute;
-    right:5%;
+    right:3%;
     bottom:1%;
 }
+
 
 /* 数字设置 */
 #scrollPics .num li{
@@ -187,6 +183,34 @@ font-size:2.5vmin;
 color:#06F;
 }
 /* about html end */
+
+/* Personal.html 个人主页 begin */
+#page-personal
+{
+/*background-image:url(/static/images/background/bk6.jpg);
+filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+-moz-background-size:100% 100%;
+    background-size:100% 100%;*/
+}
+
+.personal-header li
+{
+	float:left;
+	width:33%;
+	/*display:inline;
+	margin-right:3%;
+	max-width:180px;*/
+}
+/*
+.personal-header
+{
+width:100%;
+height:30%;
+background-color:#039;
+}*/
+/* Personal.html 个人主页 end */
+
+
 
 
 

@@ -12,10 +12,11 @@ class HomeHandler(BaseHandler):
         print(current_user)
         # 为访问者提供一个guest帐户
         if current_user == None:
+            print("游客用户提供guest用户")
             self.session["username"] = "guest"
             current_user = "guest"
             self.session.save()
-        self.render('main.html', username = current_user)
+        return self.render('main.html', username = current_user)
     def post(self, *args, **kwargs):
         print(args)
 
@@ -50,4 +51,9 @@ class NewDetailShowHandler(BaseHandler):
 class AboutHandler(BaseHandler):
     def get(self, *args, **kwargs):
         self.render("about.html")
+
+# 个人主页
+class PersonalHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        self.render("Personal.html")
 
