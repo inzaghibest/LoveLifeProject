@@ -4,22 +4,50 @@
 {%block header_title%}个人主页{%end%}
 {% block body %}
 <div data-role="page" id="page-personal">
-    <div data-role="header" class = "personal-header">
-        <h1>个人主页</h1>
-            <h1>张晓平</h1>
+    <div data-role="header" class = "person-header" data-theme="b">
+        <h1>{{coll["username"]}}的个人主页</h1>
+        <div class="header-content">
+            <div class="person-img">
+                <img src="/static/images/{{coll['gender']}}.png" width="100px" height="80px">
+            </div>
+            <div class="person-info">
+            <p class="info-name">{{coll["username"]}}</p>
+            <p class="info-detail">注册时间:{{coll["register_date"]}}</p>
+            </div>
+        </div>
+        <div data-role="navbar">
             <ul>
-                <li><a href="#">等级1</a></li>
-                <li><a href="#">金币数10</a></li>
-                <li><a href="#">我的订阅</a></li>
+                <li class="person-glod"><a href="#" >金币数({{coll["glod_count"]}})</a></li>
+                <li class="person-power"><a href="#" >等级({{coll["power"]}})</a></li>
+                <li class="person-send"><a href="#" >发表(0)</a></li>
             </ul>
+        </div>
+
+
     </div>
 
-    <div data-role="content" class="login-body">
-
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true">
+      <!--<li><a href="#"><img src="/static/images/notice.png" alt="系统通知">系统通知</a></li>-->
+      <li><a href="#"><img src="/static/images/collect.png" alt="我的收藏">我的收藏</a></li>
+      <li><a href="#"><img src="/static/images/message.png" alt="我的消息">我的消息</a></li>
+      <li><a href="#"><img src="/static/images/subscribe.png" alt="我的订阅">我的订阅</a></li>
+        </ul>
+        <div class="content-text">
+            <h1 class="person-text">个人主页功能暂缓开通,敬请期待!</h1>
+            <h1></h1>
+        </div>
     </div>
+
 
     <div data-role="footer">
-         <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+        <div data-role="navbar">
+            <ul>
+            <li><a href="/" data-icon="back">返回首页</a></li>
+            <li><a href="#" data-icon="info">反馈意见</a></li>
+            <li><a href="/exitLogin" data-icon="delete">退出登录</a></li>
+          </ul>
+      </div>
     </div>
 </div>
 {% end %}

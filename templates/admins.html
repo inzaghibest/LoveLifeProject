@@ -22,11 +22,21 @@
           <tr>
             <th>用户姓名:</th>
             <th>用户密码</th>
+              <th>用户性别:</th>
+              <th>最后登录时间:</th>
+              <th>注册时间:</th>
+              <th>金币数:</th>
+              <th>等级:</th>
           </tr>
             {% for coll in colls %}
           <tr>
             <td>{{coll["username"]}}</td>
             <td>{{coll["password"]}}</td>
+            <td>{{coll["gender"]}}</td>
+            <td>{{coll["last_login"]}}</td>
+            <td>{{coll["register_date"]}}</td>
+              <td>{{coll["glod_count"]}}</td>
+              <td>{{coll["power"]}}</td>
           </tr>
             {%end%}
         </table>

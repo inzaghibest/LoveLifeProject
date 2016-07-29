@@ -19,7 +19,7 @@ import controller.status
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8009, help='give a port!', type=int)
+define('port', default=8010, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
@@ -53,7 +53,7 @@ settings = {
     'template_path': 'templates',
     'static_path': 'static',
     #session redis配置
-    'session_secret':str(base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)),
+    'session_secret':str("7324368best"),
     'session_timeout':6000,
     'store_options':{
             'redis_host': 'localhost',

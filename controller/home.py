@@ -54,6 +54,14 @@ class AboutHandler(BaseHandler):
 
 # 个人主页
 class PersonalHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
     def get(self, *args, **kwargs):
-        self.render("Personal.html")
+        username = self.get_current_user()
+        coll = yield self.db.userinfo.find_one({"username":username})
+        if(coll == None):
+            print("用户信息不存在,异常情况")
+            self.redirect("500.html")
+        else:
+            self.render("Personal.html",coll = coll)
 

@@ -24,6 +24,9 @@ class LoginHandler(BaseHandler):
         else:
             # 用户登陆成功后保存登陆名到session
             msg = "登录成功!"
+            # 登录成功后,更新用户的登录时间
+            login_time = self.get_current_time()
+            yield self.db.userinfo.update({"username":username},{"$set":{"last_login":login_time}})
             self.session["username"] = username
             self.session.save()
         if(msg == "登录成功!"):
@@ -43,6 +46,8 @@ class RegisterHandler(BaseHandler):
     def post(self, *args, **kwargs):
         username = self.get_body_argument('fname')
         password = self.get_body_argument('fpassword')
+        gender = self.get_body_argument('gender')
+        print(gender)
         user_coll = yield self.db.userinfo.find_one({"username":username})
         msg = ""
         # 判断用户是否已经注册,如果已经注册,提示
@@ -53,8 +58,10 @@ class RegisterHandler(BaseHandler):
         else:
             now = datetime.datetime.now()
             otherStyleTime = now.strftime("%Y-%m-%d %H:%M:%S")
+            print(otherStyleTime)
             user_info = {"username":username, "password":password, "power":1,
-                         "glod_count":10, "last_login":otherStyleTime}
+                         "glod_count":10, "last_login":otherStyleTime, "register_date":otherStyleTime,
+                         "gender":gender}
             print(user_info)
             result = yield self.db.userinfo.insert(user_info)
             # 保存用户session

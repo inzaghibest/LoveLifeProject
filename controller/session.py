@@ -77,6 +77,8 @@ class SessionManager(object):
         else:
             session_id = request_handler.get_secure_cookie("session_id")
             hmac_key = request_handler.get_secure_cookie("verification")
+            print(session_id)
+            print(hmac_key)
             if(type(session_id) == bytes):
               #  print("转化")
                 session_id = str(session_id, encoding='utf-8')
@@ -109,6 +111,7 @@ class SessionManager(object):
             session_data = self._fetch(session_id)
             for key, data in session_data.items():
                 session[key] = data
+                print(session[key])
         return session
 
     # 设置一个session,存入redis数据库
