@@ -9,21 +9,13 @@
     </div>
 
     <div data-role="content">
-        <table border="1" width = "100%" height = "50%" align = "center">
-          <tr>
-            <th>薪酬对比:</th>
-            <th>需求程度:</th>
-          </tr>
-          <tr width = "100%" height = "100%">
-            <td ><img src = "/static/images/analy/1.jpg" width="80%" height="65%"> </td>
-            <td ><img src = "/static/images/analy/2.jpg" width="80%" height="65%"></td>
-          </tr>
-        </table>
+        <h1>{{occupation}}在不同地区的需求状况:</h1>
+        <embed src="/static/images/OccupationPic/{{occupation}}ForArea.pdf" width="100%" height="300px"/>
     </div>
 
     <div data-role="footer">
         <h1>此份数据报告生成时间2016/7/24 23:59:59</h1>
-        <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+        <a href="/proanaly" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
     </div>
 </div>
 {% end %}

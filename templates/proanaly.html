@@ -5,24 +5,26 @@
 {% block body %}
 <div data-role="page" id="page-proanaly">
     <div data-role="header">
-        <h1>职业分析</h1>
+    <img src="/static/images/analyPage.jpg" width="100%" height="100px">
     </div>
 
     <div data-role="content">
-
+        <h1>选择职业为你生成数据报告</h1>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="搜索职业">
             {%for coll in colls%}
-            <li data-role="list-divider">{{coll["category"]}}</li>
+            <div data-role="collapsible">
+            <h1><li data-role="list-divider">{{coll["category"]}}</li></h1>
             {%for item in coll["occupation"]%}
             <li><a href="/show/{{item}}" data-transition="flow">{{item}}</a></li>
             {%end%}
+            </div>
             {%end%}
         </ul>
         <h1 hidden() id="name"></h1>
     </div>
 
     <div data-role="footer">
-         <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+         <a href="/?username={{username}}" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
     </div>
 </div>
 {% end %}

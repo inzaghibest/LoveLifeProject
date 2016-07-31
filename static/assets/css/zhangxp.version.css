@@ -249,6 +249,18 @@ background-color:#039;
 position:relative;
 text-align:center;
 }
+/* 500.html end */
+
+/* 管理员页面 */
+.admin-contetn h1
+{
+color:#63F;
+}
+.admin-content p
+{
+font-family:Verdana, Geneva, sans-serif;
+color:#36F;
+}
 
 
 

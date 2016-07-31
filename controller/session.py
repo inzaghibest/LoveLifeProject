@@ -42,6 +42,7 @@ class Session(SessionData):
 
 # session管理器
 class SessionManager(object):
+    #初始化缓存数据库
     def __init__(self, secret, store_options, session_timeout):
         self.secret = secret
         self.session_timeout = session_timeout
@@ -52,6 +53,7 @@ class SessionManager(object):
                 self.redis = redis.StrictRedis(host=store_options['redis_host'], port=store_options['redis_port'])
         except Exception as e:
             print (e)
+    #获取缓存数据
     def _fetch(self, session_id):
         try:
             session_data = raw_data = self.redis.get(session_id)

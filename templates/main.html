@@ -39,7 +39,7 @@
       <!--导航栏-->
       <div data-role="navbar" class="main-navbar">
             <ul>
-                <li><a href="/" data-icon="home" >主页</a></li>
+                <li><a href="#" data-icon="home" >主页</a></li>
                 {% if username == "None" or username == "guest" %}
                 <li><a href="/register" data-icon="tag" data-transition="flip">注册</a></li>
                 {% end %}
@@ -48,9 +48,9 @@
                 <li><a href="/login" data-icon="user" data-transition="flip">登录</a></li>
                 {% end %}
                 {% if username == "admin" %}
-                <li><a href="/admins" data-icon="user" >管理</a></li>
+                <li><a href="/admins?username={{username}}" data-icon="user" >管理</a></li>
                 {% end %}
-                <li><a href="/about" data-rel="dialog" data-icon="mail">关于我们</a></li>
+                <li><a href="/about"  data-icon="mail">关于我们</a></li>
                 {% if username != "None" and username != "guest" %}
                 <li><a href="/Personal" data-icon="grid">个人主页</a></li>
                 <li><a href="/exitLogin" data-icon="delete">退出登录</a></li>
@@ -106,7 +106,7 @@
           </li>
 
           <li class = "main-li">
-            <a href="#TourPanel">
+            <a href="/Tourism">
             <img src="/static/images/Tourism.png">
             <h2>旅游天下</h2>
             <p>让旅游更轻松,更快捷.</p>
@@ -116,7 +116,7 @@
 
 
           <li class = "main-li">
-            <a href="#ChatPanel">
+            <a href="/ages">
             <img src="/static/images/ages.png">
             <h2>年代Show</h2>
             <p>同龄人的故事.</p>

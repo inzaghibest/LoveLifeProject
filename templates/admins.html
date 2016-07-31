@@ -16,9 +16,22 @@
 
     </div>
 
-    <div data-role="content">
-        <div class = "admin-register-table"><h1>已注册用户列表</h1></div>
-        <table border="1" width = "90%" height = "45%">
+    <div data-role="content" class="admin-content">
+          <ul data-role="listview" data-inset="true">
+              <li><h1>注册用户信息</h1></li>
+              {% for coll in colls %}
+          <li>
+            <a href="#" data-transition="slide">
+            <img src="/static/images/{{coll['gender']}}.png">
+            <h2>{{coll["username"]}}</h2>
+            <p>密码:{{coll["password"]}}金币:{{coll["glod_count"]}} 等级:{{coll["power"]}}</p>
+                <p> 最后登录时间:{{coll["last_login"]}}</p><p> 注册时间:{{coll["register_date"]}}</p>
+            </a>
+          </li>
+              {%end%}
+    </div>
+       <!-- <div class = "admin-register-table"><h1>已注册用户列表</h1>
+        <table border="1">
           <tr>
             <th>用户姓名:</th>
             <th>用户密码</th>
@@ -40,8 +53,10 @@
           </tr>
             {%end%}
         </table>
-    </div>
+    </div>-->
 
-        <div data-role="footer"><h1><a href="/"> www.anger6.com</a></h1></div>
+        <div data-role="footer">
+            <h1><a href="/?username={{username}}"> www.anger6.com</a></h1>
+        </div>
 </div>
 {%end%}

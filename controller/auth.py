@@ -7,7 +7,7 @@ import datetime
 # 登录页面
 class LoginHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        self.render("login.html", Message = "欢迎您登录")
+        self.render("login.html", Message = "欢迎您登录", username=self.get_current_user())
 
     @tornado.web.asynchronous
     @gen.coroutine

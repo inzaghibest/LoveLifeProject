@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/controller/admins.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/base.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/home.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controller/proanaly.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/session.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/status.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/static/assets/css/zhangxp.version.css" charset="UTF-8" />

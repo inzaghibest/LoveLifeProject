@@ -161,8 +161,10 @@ function checkuserName()
    // $("#usernameSpan").html(msg);
    // return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
     // 从status.html页面get数据,动态检查用户名是否使用
-    jQuery.getJSON('//localhost:8010/status',{"username":userNameValue},function(data)
+    $.ajaxSetup({ cache: false });
+    jQuery.getJSON('//localhost:8009/status',{"username":userNameValue},function(data)
             {
+            alert("getjson");
                 $('#msg').html(data['msg']);
                 Message = data['msg'];
                 // 没有报错,说明可用

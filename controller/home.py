@@ -35,7 +35,7 @@ class NewsShowHandler(BaseHandler):
                     colls[i][k]=v
                 print(colls)
                 i+=1
-        self.render("newsshow.html", colls = colls)
+        self.render("newsshow.html", colls = colls, username = self.get_current_user())
 
 # 新闻详情
 class NewDetailShowHandler(BaseHandler):
@@ -50,7 +50,8 @@ class NewDetailShowHandler(BaseHandler):
 # 关于我们
 class AboutHandler(BaseHandler):
     def get(self, *args, **kwargs):
-        self.render("about.html")
+        username = self.get_current_user
+        self.render("about.html", username = username)
 
 # 个人主页
 class PersonalHandler(BaseHandler):
@@ -64,4 +65,17 @@ class PersonalHandler(BaseHandler):
             self.redirect("500.html")
         else:
             self.render("Personal.html",coll = coll)
+
+#旅游网
+class TourismHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self, *args, **kwargs):
+        self.render("Tourism.html", username =self.get_current_user())
+
+#年代show
+class AgesHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        self.render("ages.html", username = self.get_current_user())
+
 

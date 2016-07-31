@@ -1,0 +1,48 @@
+<!--年代页面-->
+{% extends "base.html" %}
+
+{%block header_title%}年代SHOW{%end%}
+{% block body %}
+<div data-role="page">
+    <div data-role="header" >
+    <img src="/static/images/ages.jpg" width="100%" height="100px">
+    </div>
+
+    <div data-role="content" class="tourism-content">
+          <ul data-role="listview" data-inset="true">
+              <li><h1>为你推荐以下网址</h1></li>
+          <li>
+            <a href="http://z.qyer.com/" data-transition="slide">
+            <img src="/static/images/qyou.png">
+            <h2>穷游网</h2>
+            </a>
+          </li>
+
+           <li>
+            <a href="http://www.tuniu.com/" data-transition="slide">
+            <img src="/static/images/tuniu.png">
+            <h2>途牛网</h2>
+            </a>
+          </li>
+
+          <li>
+            <a href="http://www.ctrip.com/" data-transition="slide">
+            <img src="/static/images/xiecheng.png">
+            <h2>携程网</h2>
+            </a>
+          </li>
+
+
+          <li>
+            <a href="http://www.lotour.com/" data-transition="slide">
+            <img src="/static/images/letu.png">
+            <h2>乐途网</h2>
+            </a>
+          </li>
+
+    </div>
+        <div data-role="footer">
+            <h1><a href="/?username={{username}}">返回首页</a></h1>
+        </div>
+</div>
+{%end%}

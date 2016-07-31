@@ -19,7 +19,7 @@ import controller.status
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8010, help='give a port!', type=int)
+define('port', default=8009, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
@@ -42,7 +42,9 @@ handlers = [
     (r'^/status',controller.status.StatusHandler),
     (r'^/about',controller.home.AboutHandler),
     (r'^/exitLogin',controller.auth.ExitLoginHandler),
-    (r'^/Personal',controller.home.PersonalHandler)
+    (r'^/Personal',controller.home.PersonalHandler),
+    (r'^/Tourism',controller.home.TourismHandler),
+    (r'^/ages',controller.home.AgesHandler)
     #可以添加这个一个类,放到最后面,可以处理任何页面，捕捉未找到页面(r'.*', PageNotFoundHandler)
         ]
 settings = {

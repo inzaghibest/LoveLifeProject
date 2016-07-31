@@ -19,7 +19,7 @@ class AdminsHandler(BaseHandler):
                     colls[i][k]=v
                 print(colls)
                 i+=1
-        return self.render("admins.html", colls =colls)
+        return self.render("admins.html", colls =colls, username = self.get_current_user())
 
 # 职业分析管理页面
 class AnalyHandler(BaseHandler):
