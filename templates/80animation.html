@@ -1,0 +1,28 @@
+<!--80动画-->
+{% extends "base.html" %}
+
+{%block header_title%}80动画{%end%}
+{% block body %}
+<div data-role="page">
+    <div data-role="header" >
+    <img src="/static/images/80main.jpg" width="100%" height="200px">
+    </div>
+
+    <div data-role="content" class="tourism-content">
+          <ul data-role="listview" data-inset="true">
+          {% for coll in colls%}
+          <li>
+            <a href="#" data-transition="slide">
+            <img src="{{coll['imgUrl']}}">
+            <h2>{{coll["animationName"]}}</h2>
+            <p>{{coll["animationDescrp"]}}</p>
+            </a>
+          </li>
+          {% end %}
+
+    </div>
+        <div data-role="footer">
+            <h1><a href="/80main">返回首页</a></h1>
+        </div>
+</div>
+{%end%}

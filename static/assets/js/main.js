@@ -19,13 +19,12 @@ $(document).on("pageinit","#page-main",function(){
 
     // 定时获取当前时间
     setTimeout(GetCurrentTime, 1000);
-
     //滚动广告
     var len = $(".num > li").length;
     var index = 0;  //图片序号
     var adTimer;
     $(".num li").mouseover(function() {
-        index = $(".num li").index(this);  //获取鼠标悬浮 li 的index
+        index = $(".num li").index(this);  //获取鼠标悬浮 li 的index,展示相应图片.
         showImg(index);
     }).eq(0).mouseover();
     //滑入停止动画，滑出开始动画.
