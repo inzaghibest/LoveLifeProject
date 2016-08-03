@@ -34,7 +34,7 @@ class LoginHandler(BaseHandler):
             return self.redirect("/?username=%s" %self.get_current_user())
         else:
             print(msg)
-            self.render("login.html", Message = msg)
+            self.render("login.html", Message = msg,username = self.get_current_user())
 
 # 注册页面
 class RegisterHandler(BaseHandler):
