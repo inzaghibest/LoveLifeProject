@@ -1,0 +1,27 @@
+<!-- 新闻初级展示页面,不包含详细内容-->
+{% extends "base.html" %}
+
+{%block header_title%}奥运新闻{%end%}
+{% block body %}
+<div data-role="page" id="page-olynewsmain">
+    <div data-role="header">
+    <img src="/static/images/glod.jpg" width="100%" height="100px">
+    </div>
+
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="搜索新闻">
+            {%for coll in colls%}
+            <li>
+                <p>{{coll["publish"]}} </p>
+                <a href="{{coll['url']}}">{{coll["title"]}}</a>
+
+            </li>
+            {%end%}
+        </ul>
+    </div>
+
+    <div data-role="footer">
+         <a href="/OlympicMain" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

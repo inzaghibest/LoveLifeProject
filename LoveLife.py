@@ -50,7 +50,8 @@ handlers = [
     (r'^/80main',ages.EightyHandler),
     (r'^/80AnimationManage',ages.EightyAnimationManageHandler),
     (r'^/OlympicMain',Olympic.OlympicMainHandler),
-    (r'^/80animation',ages.EightyAnimationHandler)
+    (r'^/80animation',ages.EightyAnimationHandler),
+    (r'^/OlyNewsMain',Olympic.OlympicNewsHandler)
     #可以添加这个一个类,放到最后面,可以处理任何页面，捕捉未找到页面(r'.*', PageNotFoundHandler)
         ]
 settings = {
@@ -109,6 +110,7 @@ class Application(tornado.web.Application):
                                                                  settings['session_timeout'])
         #初始化mongodbs
         self.db = settings["database"]
+
 
 
 
