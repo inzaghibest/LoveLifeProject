@@ -1,9 +1,9 @@
 <!--80动画-->
 {% extends "base.html" %}
 
-{%block header_title%}80动画{%end%}
+{%block header_title%}80{{category}}{%end%}
 {% block body %}
-<div data-role="page">
+<div data-role="page" id = "page-80show">
     <div data-role="header" >
     <img src="/static/images/80main.jpg" width="100%" height="200px">
     </div>
@@ -13,16 +13,20 @@
           {% for coll in colls%}
           <li>
             <a href="#" data-transition="slide">
-            <img src="{{coll['imgUrl']}}">
-            <h2>{{coll["animationName"]}}</h2>
-            <p>{{coll["animationDescrp"]}}</p>
+                <img class="80show-img" src="{{coll['imgUrl']}}">
+                <h2>{{coll["name"]}}</h2>
+                <p>{{coll["descrp"]}}
+                    {% if category == "music" %}
+                    <audio id = "media" src = "{{coll['audioUrl']}}"></audio>
+                    {% end %}
+                </p>
             </a>
           </li>
           {% end %}
 
     </div>
         <div data-role="footer">
-            <h1><a href="/80main">返回首页</a></h1>
+            <h1><a href="/80main">返回</a></h1>
         </div>
 </div>
 {%end%}

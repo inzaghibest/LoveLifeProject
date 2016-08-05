@@ -2,8 +2,6 @@ html, body
 {
 width:100%;
 height:100%;
-font-size:5px;
-color:#009;
 }
 
 /*.main-page
@@ -123,8 +121,8 @@ text-align:center;
 }
 .register-form fieldset
 {
-padding:2%;
-border:1px solid #CCC;
+padding:1%;
+border:1px solid #999;
 border-radius:25px 25px;
 }
 
@@ -140,7 +138,7 @@ color:#63F;
 .register-button
 {
 margin:0 auto 0 auto;
-width:120px;
+width:200px;
 height:50px;
 text-align:center;
 }
@@ -179,11 +177,17 @@ height:50px;
 text-align:center;
 }
 
+.login-foot
+{
+position:absolute;
+width:100%;
+bottom:2%;
+}
 .login-msg
 {
 text-align:center;
 font-family:Verdana, Geneva, sans-serif;
-font-size:2vmin;
+font-size:1.5vmin;
 color:#63F;
 }
 /* login.html end */
@@ -277,6 +281,14 @@ color:#63F;
 {
 font-family:Verdana, Geneva, sans-serif;
 color:#36F;
+}
+
+/* 80Show.html */
+
+.80show-img
+{
+border:1px solid;
+border-radius:50px 50px;
 }
 
 

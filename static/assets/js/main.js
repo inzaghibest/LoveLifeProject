@@ -37,13 +37,13 @@ $(document).on("pageinit","#page-main",function(){
             if (index == len) {       //最后一张图片之后，转到第一张
                 index = 0;
             }
-        }, 2000);
+        }, 3000);
     }).trigger("mouseleave");
     function showImg(index) {
         var adHeight = $("#scrollPics>ul>li:first").height();
         $(".slider").stop(true, false).animate({
             "marginTop": -adHeight * index + "px"    //改变 marginTop 属性的值达到轮播的效果
-        }, 500);
+        }, 1000);
         $(".num li").removeClass("on")
             .eq(index).addClass("on");
     }
@@ -146,7 +146,7 @@ function checkuserName()
     // 首先检查用户名格式
     var userNameValue = $("#fname").val();
     var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
-    var msg ="<img src='static/images/right1.jpg' width='60px' height=40px'>";
+    var msg ="<img src='static/images/right1.jpg' width='100px' height=80px'>";
     if(userNameValue == null || userNameValue == "")
     {
         msg = "姓名:";
@@ -161,29 +161,32 @@ function checkuserName()
    // return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
     // 从status.html页面get数据,动态检查用户名是否使用
     $.ajaxSetup({ cache: false });
-    jQuery.getJSON('//localhost:8009/status',{"username":userNameValue},function(data)
+    jQuery.getJSON('//localhost:8000/status',{"username":userNameValue},function(data)
             {
-            alert("getjson");
                 $('#msg').html(data['msg']);
                 Message = data['msg'];
                 // 没有报错,说明可用
                 if(Message == "")
                 {
-                $("#usernameSpan").html(msg);
-                $('#msg').html("该用户名可用!");
-                $(".register-legend").html("<img src='/static/images/register.jpg' width = '100px' height = '80px'>");
+                    $("#usernameSpan").html(msg);
+                    // js校验成功
+                    if(msg == "<img src='static/images/right1.jpg' width='100px' height=80px'>")
+                    {
+                        $('#msg').html("该用户名可用!");
+                    }
+                    $(".register-legend").html("<img src='/static/images/register.jpg' width = '100px' height = '80px'>");
                 }else
                 {
-                msg = "<font color='red'>"+Message +"</font>";
-                $("#usernameSpan").html(msg);
-                $(".register-legend").html("<img src='/static/images/already.jpg' width = '100px' height = '80px'>");
+                    msg = "<font color='red'>"+Message +"</font>";
+                    $("#usernameSpan").html(msg);
+                    $(".register-legend").html("<img src='/static/images/already.jpg' width = '100px' height = '80px'>");
                 }
             }
      );
 
-     return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
+     return msg == "<img src='static/images/right1.jpg' width='100px' height=80px'>";
 }
-function CheckNameOther()
+/*function CheckNameOther()
 {
     var userNameValue = $("#fname").val();
     var usernameRegex = /^[\u4E00-\u9FA5\uF900-\uFA2D\w]{0,15}$/;
@@ -200,7 +203,7 @@ function CheckNameOther()
     }
     $("#usernameSpan").html(msg);
     return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
-}
+}*/
 
 /* 密码校验 */
 function checkpassWord()
@@ -236,3 +239,29 @@ function checkrepassWord()
     $("#repasswordSpan").html(msg);
     return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
 }
+
+// 80Show页面
+$(document).on("pageinit","#page-80show",function()
+{
+    $("a").click(function()
+    {
+        var element = $(this).find("audio")[0];
+        if(element.paused)
+        {
+            $("audio").each(function()
+            {
+                this.pause();
+            })
+            element.play();
+
+        }
+        else
+        {
+            $("audio").each(function()
+            {
+                this.pause();
+            })
+            element.pause();
+        }
+    })
+})

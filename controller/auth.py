@@ -67,7 +67,6 @@ class RegisterHandler(BaseHandler):
             # 保存用户session
             self.session["username"] = username
             self.session.save()
-            # return self.redirect("/?username=%s"%username)
             # next参数指向来到登陆页面之前的页面,为了用户体验,登陆成功之后返回上一个页面的方式
             self.redirect(self.get_argument('next', '/?username%s'%username))
 

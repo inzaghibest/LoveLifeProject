@@ -4,35 +4,35 @@
 {%block header_title%}注册{%end%}
 {% block body %}
 <div data-role="page" id="page-register">
-    <div data-role="header" data-theme="b">
+    <div data-role="header">
         <h1>注册</h1>
+        <div class = "register-msg" id = "msg"><h1>{{Message}}</h1></div>
     </div>
     <div data-role="content" class="register-body">
-    <form method="post" action="/register" class="register-form">
-        {% raw xsrf_form_html() %}
-        <fieldset >
-           <legend class="register-legend"><img src="/static/images/register.jpg" width = "50px" height = "30px">
-           </legend>
-          <label for="fname" id="usernameSpan">姓名:</label>
-          <input type="text" name="fname" id="fname" data-clear-btn = "true">
-            <label for="gender" id="genderSpan">性别:</label>
-              <select name="gender" id="gender">
-              <option value="man">男</option>
-              <option value="woman">女</option>
-            </select>
-            <label for="fpassword" id="passwordSpan">密码:</label>
-          <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
-            <label for="frepassword" id="repasswordSpan">再次输入密码:</label>
-          <input type="text" name="frepassword" id="frepassword" data-clear-btn="true">
-            <div class="register-button"><input type="submit"  value="注册" id="register-commit" width="150px" height="100px">
+        <form method="post" action="/register" class="register-form">
+            {% raw xsrf_form_html() %}
+            <fieldset >
+               <legend class="register-legend"><img src="/static/images/register.jpg" width = "100px" height = "80px">
+               </legend>
+              <label for="fname" id="usernameSpan">姓名:</label>
+              <input type="text" name="fname" id="fname" data-clear-btn = "true">
+                <label for="gender" id="genderSpan">性别:</label>
+                  <select name="gender" id="gender">
+                  <option value="man">男</option>
+                  <option value="woman">女</option>
+                </select>
+                <label for="fpassword" id="passwordSpan">密码:</label>
+              <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
+                <label for="frepassword" id="repasswordSpan">再次输入密码:</label>
+              <input type="text" name="frepassword" id="frepassword" data-clear-btn="true">
+                <div class="register-button">
+                    <input type="submit"  value="注册" id="register-commit" width="150px" height="100px">
                 </div>
-        </fieldset>
-    </form>
-
-        </div>
-    <div data-role="footer" data-theme="b">
+            </fieldset>
+        </form>
+    </div>
+    <div data-role="footer">
          <a href="/" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
-         <div class = "register-msg" id = "msg"><h1>{{Message}}</h1></div>
     </div>
 </div>
 {% end %}

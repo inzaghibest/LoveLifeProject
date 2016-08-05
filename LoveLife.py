@@ -21,7 +21,7 @@ from controller import Olympic
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8000, help='give a port!', type=int)
+define('port', default=8001, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")
@@ -50,8 +50,8 @@ handlers = [
     (r'^/80main',ages.EightyHandler),
     (r'^/80AnimationManage',ages.EightyAnimationManageHandler),
     (r'^/OlympicMain',Olympic.OlympicMainHandler),
-    (r'^/80animation',ages.EightyAnimationHandler),
-    (r'^/OlyNewsMain',Olympic.OlympicNewsHandler)
+    (r'^/80Show/(.*)',ages.EightyAnimationHandler),
+    (r'^/OlyNewsMain(.*)',Olympic.OlympicNewsHandler)
     #可以添加这个一个类,放到最后面,可以处理任何页面，捕捉未找到页面(r'.*', PageNotFoundHandler)
         ]
 settings = {

@@ -1,22 +1,31 @@
 <!-- 管理页面 管理职业分析-->
 {% extends "base.html" %}
 
-{%block header_title%}80动画{%end%}
+{%block header_title%}80管理{%end%}
 {% block body %}
 <div data-role="page" id="page-animationManage">
     <div data-role="header">
-        <h1>职业分析管理</h1>
+        <h1>80管理</h1>
     </div>
 
     <div data-role="content">
     <form method="post" action="/80AnimationManage">
         {% raw xsrf_form_html() %}
-      <label for="aname" id="anameSpan">动画名:</label>
-      <input type="text" name="aname" id="aname" data-clear-btn = "true">
-        <label for="animationImg" id="animationImgSpan">动画图片路径:</label>
-      <input type="text" name="animationImg" id="animationImg" data-clear-btn="true">
-        <label for="animationDescrip">新闻正文:</label>
-        <textarea name="animationDescrip" id="animationDescrip"></textarea>
+        <label for="category">选择编辑的项目</label>
+        <select name="category" id="category">
+        <option value="animation">80动画</option>
+        <option value="music">80音乐</option>
+        <option value="game">80游戏</option>
+        <option value="toys">80玩具</option>
+        </select>
+      <label for="name" id="nameSpan">名称:</label>
+      <input type="text" name="name" id="name" data-clear-btn = "true">
+        <label for="imgurl" id="imgurlSpan">图片路径:</label>
+      <input type="text" name="imgurl" id="imgurl" data-clear-btn="true">
+        <label for="audiourl" id="iaudiourlSpan">歌曲路径:</label>
+      <input type="text" name="audiourl" id="audiourl" data-clear-btn="true">
+        <label for="descrip">描述:</label>
+        <textarea name="descrip" id="descrip"></textarea>
         <input type="submit"  value="添加" id="analy-commit">
     </form>
     </div>

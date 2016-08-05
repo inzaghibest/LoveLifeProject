@@ -4,7 +4,7 @@
 {%block header_title%}登录{%end%}
 {% block body %}
 <div data-role="page" id="page-login">
-    <div data-role="header" data-theme="b">
+    <div data-role="header">
         <h1>登录</h1>
     </div>
 
@@ -19,13 +19,13 @@
           <input type="text" name="fname" id="fname" data-clear-btn = "true">
             <label for="fpassword" id="passwordSpan">密码:</label>
           <input type="text" name="fpassword" id="fpassword" data-clear-btn="true">
-            <div class="login-button"> <input type="submit"  value="提交" id="login-commit"></div>
+            <div class="login-button"> <input type="submit"  value="登录" id="login-commit"></div>
         </fieldset>
     </form>
 
     </div>
 
-    <div data-role="footer" data-theme="b">
+    <div data-role="footer"  class = "login-foot">
          <a href="/?username={{username}}" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
         <div class="login-msg"><h1>{{Message}}</h1></div>
     </div>
