@@ -18,7 +18,11 @@
         <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="搜索新闻">
             {%for coll in colls%}
             <li>
+                {% if category == "/RealTime"%}
                 <p>{{coll["publish"]}} </p>
+                {% else %}
+                <p>参与数({{coll['involves']}}) 评论数({{coll['comments']}})</p>
+                {% end %}
                 <a href="{{coll['url']}}">{{coll["title"]}}</a>
 
             </li>

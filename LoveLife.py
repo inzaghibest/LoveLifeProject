@@ -21,7 +21,7 @@ from controller import Olympic
 
 # 定义基本信息
 from tornado.options import define,options
-define('port', default=8001, help='give a port!', type=int)
+define('port', default=80, help='give a port!', type=int)
 define('host', default='127.0.0.1', help='localhost')
 define('url', default=None, help='The Url Show HTML')
 define('config', default = "./config.yaml", help="config file's full path")

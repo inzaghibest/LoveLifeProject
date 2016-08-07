@@ -3,19 +3,24 @@
 
 {%block header_title%}职业分析{%end%}
 {% block body %}
-<div data-role="page" id = "page-show">
+<div data-role="page" id = "page-occupation-show">
     <div data-role="header">
-        <h1>已为你生成职业{{occupation}}的分析报告:</h1>
+        <h4 id="occupation-title">正在生成<img src="/static/images/load.gif"></h4>
+        <p id="name" hidden>{{occupation}}</p>
     </div>
 
-    <div data-role="content">
-        <h1>{{occupation}}在不同地区的需求状况:</h1>
-        <embed src="/static/images/OccupationPic/{{occupation}}ForArea.pdf" width="100%" height="300px"/>
+    <div data-role="content" id = "occupation-content">
+      <!--  <h4>{{occupation}}不同地区的需求状况:</h4>
+        <img src="/static/images/OccupationPic/{{occupation}}ForArea.png" width="100%" height="300px"/>
+        <h4>{{occupation}}不同工作经验的需求情况:</h4>
+        <img src="/static/images/OccupationPic/{{occupation}}ForExperience.png" width="100%" height="200px"/>
+        <h4>{{occupation}}不同学历的需求情况:</h4>
+        <img src="/static/images/OccupationPic/{{occupation}}ForEducation.png" width="100%" height="200px"/>-->
     </div>
 
     <div data-role="footer">
-        <h1>此份数据报告生成时间2016/7/24 23:59:59</h1>
-        <a href="/proanaly" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+        <p id="occupation-time" hidden>此份数据报告生成时间{{current_time}}</p>
+        <a href="/proanaly" id="show-back" hidden class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
     </div>
 </div>
 {% end %}

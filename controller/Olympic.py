@@ -15,10 +15,10 @@ class OlympicNewsHandler(BaseHandler):
         # 获取奥运新闻
         category = args[0]
         print(category)
-        if(category == "RealTime"):
+        if(category == "/RealTime"):
             cursor = self.db.aoyun_news_table.find().sort([("publish",-1)]).limit(10)
         else:
-            cursor = self.db.aoyun_news_table.find().sort([("publish",-1)]).limit(10)
+            cursor = self.db.aoyun_news_table.find().sort([("hot",-1)]).limit(10)
         if(cursor != None):
             colls = []
             i = 0
@@ -27,7 +27,7 @@ class OlympicNewsHandler(BaseHandler):
                     colls.append({})
                     for k,v in coll.items():
                         colls[i][k]=v
-                    print(colls)
+                    print(colls[i])
                     i+=1
-        self.render("OlyNewsMain.html", colls = colls)
+        self.render("OlyNewsMain.html", colls = colls, category = category)
 

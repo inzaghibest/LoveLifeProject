@@ -15,6 +15,7 @@
             }
         }
 }});*/
+
 $(document).on("pageinit","#page-main",function(){
 
     // 定时获取当前时间
@@ -47,7 +48,7 @@ $(document).on("pageinit","#page-main",function(){
         $(".num li").removeClass("on")
             .eq(index).addClass("on");
     }
-});
+})
 //获取当前时间的函数
 function GetCurrentTime()
 {
@@ -81,7 +82,7 @@ $(document).on("pageinit","#page-login",function(){
     var bPassWord = checkpassWordforlogin();
     return bUserName&&bPassWord;
     })
-});
+})
 
 // 登录页面用户校验
 function checkuserNameforlogin()
@@ -138,7 +139,7 @@ $(document).on("pageinit","#page-register",function(){
     var bRePassWord = checkrepassWord();
     return bUserName&&bPassWord&&bRePassWord;
     })
-});
+})
 
 /*注册页面用户名校验*/
 function checkuserName()
@@ -161,7 +162,7 @@ function checkuserName()
    // return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
     // 从status.html页面get数据,动态检查用户名是否使用
     $.ajaxSetup({ cache: false });
-    jQuery.getJSON('//localhost:8000/status',{"username":userNameValue},function(data)
+    jQuery.getJSON('//www.anger6.com:80/status',{"requesttype":"checkname","username":userNameValue},function(data)
             {
                 $('#msg').html(data['msg']);
                 Message = data['msg'];
@@ -265,3 +266,57 @@ $(document).on("pageinit","#page-80show",function()
         }
     })
 })
+// 管理80页面
+/*$(document).on("pageinit", "#page-animationManage", function()
+{
+    $("#80-commit").click(function()
+    {
+        alert("1");
+        imgurl = $("#imgfile").val();
+        alert(imgurl);
+        if(imgurl != "")
+        {
+               alert(imgurl);
+               File updateFile = new File("F:\自己的项目\乐生活\LoveLifeProject\static\images");
+               if(updateFile != null)
+               {
+                       updateFile.write(imgurl);
+               }
+        }
+    })
+})*/
+function viewmypic()
+{
+   imgurl = $("#imgfile").val();
+}
+// 职业分析展示页面
+$(document).on("pageinit","#page-occupation-show",function()
+{
+    setTimeout(sendJson, 500);
+})
+
+    function sendJson()
+    {
+        var occupation = $("#name").html();
+        if(occupation == "")
+        {
+             setTimeout(sendJson, 500);
+             return;
+        }
+        jQuery.getJSON('//www.anger6.com:80/status',{"requesttype":"occupation", "occupation":occupation},function(data)
+        {
+            var occupation = $("#name").html();
+            title = "已生成";
+            msg = "<h4>" + occupation + "不同地区的需求情况:" + "</h4>" + "<img src=\"/static/images/OccupationPic/" +occupation + "ForArea.png\" width=\"100%\" height=\"400px\"/>";
+            msg += "<h4>" + occupation + "不同工作经验的需求情况:" + "</h4>" + "<img src=\"/static/images/OccupationPic/" +occupation + "ForExperience.png\" width=\"100%\" height=\"400px\"/>";
+            msg += "<h4>" + occupation + "不同学历的需求情况:" + "</h4>" + "<img src=\"/static/images/OccupationPic/" +occupation + "ForEducation.png\" width=\"100%\" height=\"400px\"/>";
+            $("#occupation-content").html(msg);
+            $("#occupation-title").html(title);
+            $("#occupation-time").show();
+           /* $("#occupation-content").html("<h4>{{occupation}}不同地区的需求状况:</h4> <img src=\"/static/images/OccupationPic/{{occupation}}ForArea.png\" width=\"100%\" height=\"300px\"/>");
+            <h4>{{occupation}}不同工作经验的需求情况:</h4>
+            <img src="/static/images/OccupationPic/{{occupation}}ForExperience.png" width="100%" height="200px"/>
+            <h4>{{occupation}}不同学历的需求情况:</h4>
+            <img src="/static/images/OccupationPic/{{occupation}}ForEducation.png" width="100%" height="200px"/>");*/
+        });
+    }
