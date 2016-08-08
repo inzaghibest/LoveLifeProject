@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<!--发表帖子-->
+{% extends "base.html" %}
 
-</body>
-</html>
+{%block header_title%}发表帖子{%end%}
+{% block body %}
+<div data-role="page" id="page-register">
+    <div data-role="header">
+        <h1>发表帖子</h1>
+    </div>
+    <div data-role="content" >
+        <form method="post" action="/Publish">
+            {% raw xsrf_form_html() %}
+            <label for="articleName" id="articlenameSpan">贴子标题:</label>
+            <input type="text" name="articleName" id="articleName" >
+                <label for="articleCategory" id="articleCategorySpan">分类:</label>
+                  <select name="articleCategory" id="articleCategory">
+                  <option value="dongman">动漫</option>
+                </select>
+                <label for="editor">帖子正文</label>
+                <textarea id="editor" name="editor"></textarea>
+                    <input type="submit"  value="发表"  width="150px" height="100px">
+        </form>
+    </div>
+    <div data-role="footer">
+         <h1>{{Message}}</h1>
+         <a href="/Personal" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

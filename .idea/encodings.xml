@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/controller/ages.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/base.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/home.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/controller/personal.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/proanaly.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/session.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/controller/status.py" charset="UTF-8" />
