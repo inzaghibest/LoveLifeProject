@@ -8,3 +8,13 @@
 "qq":QQ号
 "email":邮箱地址
 }
+用户发表文章user_publish
+{
+"username":发表用户姓名
+"ArticleTitle":文章标题
+"ArticleText":文章内容
+"ZambisCount":赞次数
+"CollectionCount":收藏次数
+"Comment":[{"name":"","text":""}]
+
+}

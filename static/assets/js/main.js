@@ -162,7 +162,7 @@ function checkuserName()
    // return msg == "<img src='static/images/right1.jpg' width='60px' height=40px'>";
     // 从status.html页面get数据,动态检查用户名是否使用
     $.ajaxSetup({ cache: false });
-    jQuery.getJSON('//www.anger6.com:80/status',{"requesttype":"checkname","username":userNameValue},function(data)
+    jQuery.getJSON('//localhost:8000/status',{"requesttype":"checkname","username":userNameValue},function(data)
             {
                 $('#msg').html(data['msg']);
                 Message = data['msg'];
@@ -303,7 +303,7 @@ $(document).on("pageinit","#page-occupation-show",function()
              setTimeout(sendJson, 500);
              return;
         }
-        jQuery.getJSON('//www.anger6.com:80/status',{"requesttype":"occupation", "occupation":occupation},function(data)
+        jQuery.getJSON('//localhost:8000/status',{"requesttype":"occupation", "occupation":occupation},function(data)
         {
             var occupation = $("#name").html();
             title = "已生成";
