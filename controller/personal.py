@@ -5,11 +5,20 @@ from controller.base import BaseHandler
 from tornado import gen
 
 class PublishHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
     def get(self, *args, **kwargs):
-        cursor = yield self.db.post_category.find()
-        if(cursor != None):
-
-        self.render("Publish.html",Message="欢迎发帖")
+        cursor = self.db.post_category.find()
+        colls = []
+        i = 0
+        while (yield cursor.fetch_next):
+                coll = cursor.next_object()
+                colls.append({})
+                for k,v in coll.items():
+                    colls[i][k]=v
+                print(colls)
+                i+=1
+        self.render("Publish.html",Message="欢迎发帖",colls = colls)
     @tornado.web.asynchronous
     @gen.coroutine
     def post(self, *args, **kwargs):
@@ -19,6 +28,10 @@ class PublishHandler(BaseHandler):
         print(articleTitle)
         articleText = self.get_body_argument("editor")
         print(articleText)
+        articleCategory = self.get_body_argument("articleCategory")
+        print(articleCategory)
+
+
         # "username":发表用户姓名
         # "ArticleTitle":文章标题
         # "ArticleText":文章内容
@@ -28,11 +41,12 @@ class PublishHandler(BaseHandler):
         yield self.db.user_publish.insert({"username":username,
                                            "ArticleTile":articleTitle,
                                            "ArticleText":articleText,
+                                           "ArticleCategory":articleCategory,
                                            "ZambisCount":0,
                                            "CollectionCount":0,
                                            "Comment":[{}],
                                            "PublshTime":self.get_current_time()})
-        self.render("Publish.html",Message = "发表成功!")
+        self.render("Publish.html",Message = "发表成功!",colls = self.category_colls)
 
 
 

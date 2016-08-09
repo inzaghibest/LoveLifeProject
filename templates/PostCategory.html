@@ -1,0 +1,23 @@
+<!--帖子类别管理-->
+{% extends "base.html" %}
+
+{%block header_title%}帖子类别管理{%end%}
+{% block body %}
+<div data-role="page" id="page-register">
+    <div data-role="header">
+        <h1>帖子类别管理</h1>
+    </div>
+    <div data-role="content" >
+        <form method="post" action="/PostCategory">
+            {% raw xsrf_form_html() %}
+            <label for="postName" id="posnameSpan">添加分类:</label>
+            <input type="text" name="postName" id="postName" >
+            <input type="submit"  value="添加"  width="150px" height="100px">
+        </form>
+    </div>
+    <div data-role="footer">
+         <h1>{{Message}}</h1>
+         <a href="/admin" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+    </div>
+</div>
+{% end %}

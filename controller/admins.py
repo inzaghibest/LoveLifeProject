@@ -128,6 +128,25 @@ class NewsHandler(BaseHandler):
             msg = "插入成功"
         self.render("news.html", Message = msg)
 
+# 发帖管理页面
+class PostManagerHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        self.render("PostCategory.html", Message = "帖子类别管理")
+
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def post(self, *args, **kwargs):
+        postName = self.get_argument("postName")
+        print(postName)
+        doc_coll = yield self.db.post_category.find_one({"postName":postName})
+        if(doc_coll != None):
+            self.render("PostCategory.html", Message = "该类别已经存在")
+        else:
+            yield self.db.post_category.insert({"postName":postName})
+            self.render("PostCategory.html", Message = "添加成功")
+
+
+
 
 
 

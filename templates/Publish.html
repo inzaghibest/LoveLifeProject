@@ -14,7 +14,9 @@
             <input type="text" name="articleName" id="articleName" >
                 <label for="articleCategory" id="articleCategorySpan">分类:</label>
                   <select name="articleCategory" id="articleCategory">
-                  <option value="dongman">动漫</option>
+                      {% for coll in colls %}
+                  <option value="{{coll['postName']}}">{{coll["postName"]}}</option>
+                      {% end %}
                 </select>
                 <label for="editor">帖子正文</label>
                 <textarea id="editor" name="editor"></textarea>
