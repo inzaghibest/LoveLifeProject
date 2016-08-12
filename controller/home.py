@@ -78,4 +78,34 @@ class AgesHandler(BaseHandler):
     def get(self, *args, **kwargs):
         self.render("ages.html", username = self.get_current_user())
 
+#论坛
+class ForumMainHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @gen.coroutine
+    def get(self, *args, **kwargs):
+        # 获取贴子类别
+        cursor = self.db.post_category.find()
+        colls = []
+        i = 0
+        while (yield cursor.fetch_next):
+                coll = cursor.next_object()
+                colls.append({})
+                for k,v in coll.items():
+                    colls[i][k]=v
+                print(colls)
+                i+=1
+        # 获取被赞次数最多的帖子
+        post_cursor = self.db.user_publish.find().sort([("ZambisCount",-1)]).limit(6)
+        if(post_cursor != None):
+            post_colls = []
+            i = 0
+            while (yield post_cursor.fetch_next):
+                    coll = post_cursor.next_object()
+                    post_colls.append({})
+                    for k,v in coll.items():
+                        post_colls[i][k]=v
+                    print(post_colls[i])
+                    i+=1
+        self.render("forumMain.html", username = self.get_current_user(), colls= colls, post_colls = post_colls)
+
 

@@ -54,7 +54,8 @@ handlers = [
     (r'^/80Show/(.*)',ages.EightyAnimationHandler),
     (r'^/OlyNewsMain(.*)',Olympic.OlympicNewsHandler),
     (r'^/Publish',personal.PublishHandler),
-    (r'^/PostCategory',controller.admins.PostManagerHandler)
+    (r'^/PostCategory',controller.admins.PostManagerHandler),
+    (r'^/forumMain',controller.home.ForumMainHandler)
     #可以添加这个一个类,放到最后面,可以处理任何页面，捕捉未找到页面(r'.*', PageNotFoundHandler)
         ]
 settings = {

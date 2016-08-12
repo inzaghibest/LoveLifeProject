@@ -4,6 +4,7 @@ import tornado.web
 from controller.base import BaseHandler
 from tornado import gen
 
+# 发帖子
 class PublishHandler(BaseHandler):
     @tornado.web.asynchronous
     @gen.coroutine
@@ -30,9 +31,7 @@ class PublishHandler(BaseHandler):
         print(articleText)
         articleCategory = self.get_body_argument("articleCategory")
         print(articleCategory)
-
-
-        # "username":发表用户姓名
+        # "sername":发表用户姓名
         # "ArticleTitle":文章标题
         # "ArticleText":文章内容
         # "ZambisCount":赞次数
@@ -45,7 +44,7 @@ class PublishHandler(BaseHandler):
                                            "ZambisCount":0,
                                            "CollectionCount":0,
                                            "Comment":[{}],
-                                           "PublshTime":self.get_current_time()})
+                                           "PublishTime":self.get_current_time()})
         self.render("Publish.html",Message = "发表成功!",colls = self.category_colls)
 
 

@@ -1,0 +1,30 @@
+<!--论坛首页-->
+{% extends "base.html" %}
+
+{%block header_title%}论坛{%end%}
+{% block body %}
+<div data-role="page" id = "page-forummain">
+
+    <div data-role="header" >
+    <h1>论坛首页</h1>
+    </div>
+
+    <div data-role="content">
+
+        <div data-role="navbar">
+          <ul>
+              {% for coll in colls %}
+              <li><a href="#">{{coll['postName']}}</a></li>
+              {% end %}
+          </ul>
+        </div>
+
+  </div>
+
+   <div data-role="footer">
+         <a href="/?username={{username}}" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">返回首页</a>
+         <h1>欢迎您{{username}}!</h1>
+    </div>
+
+</div>
+{%end%}
